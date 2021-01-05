@@ -16,8 +16,8 @@ Een nieuwe ontwikkeling in het kabelnetwerk biedt de mogelijkheid om meerdere hu
 
 Huizen mogen via eenzelfde kabel aan een batterij verbonden zijn. Ze mogen dus een kabel delen.
 Verbind alle huizen in de drie wijken aan een batterij. De maximumcapaciteit van de huizen mag die van de batterijen uiteraard niet overschrijden.
-Optimaliseer het smartGrid voor de drie wijken.
-Advanced
+Optimaliseer het smartGrid voor de drie wijken.  
+Advanced  
 Nu is het zo, dat de batterijen misschien niet op de best mogelijke plaatsen staan. Het verplaatsen van batterijen vercompliceert de zaak enorm, maar de opdrachtgever wil het toch proberen, om inzicht in het probleem te krijgen.
 
 Verplaats de batterijen, en probeer een beter resultaat te realiseren.
