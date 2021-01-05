@@ -22,9 +22,9 @@ Nu is het zo, dat de batterijen misschien niet op de best mogelijke plaatsen sta
 
 Verplaats de batterijen, en probeer een beter resultaat te realiseren.
 Het bedrijf SmartBatteryCompany heeft recentelijk drie types batterijen ontwikkeld, met verschillende capaciteiten en verschillende prijzen.
-
-Batterijtype	Capaciteit	Prijs
-PowerStar	450	900
-Imerse-II	900	1350
-Imerse-III	1800	1800
+  
+Batterijtype	Capaciteit	Prijs  
+PowerStar	450	    900   
+Imerse-II	900	1350  
+Imerse-III	1800	1800    
 Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je mag er zoveel gebruiken als je wil en kunnen op ieder gridpunt zonder huis geplaatst worden.
