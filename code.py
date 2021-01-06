@@ -1,5 +1,9 @@
 import csv
 
+class District:
+    __init__:(self, cost-shared):
+    cost-shared = cost-shared
+
 
 
 
