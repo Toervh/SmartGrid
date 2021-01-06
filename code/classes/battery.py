@@ -4,5 +4,6 @@ class Battery:
         self.capacity = capacity
         self.houses = houses
 
+# TODO add functions
     def add_houses(self):
         pass

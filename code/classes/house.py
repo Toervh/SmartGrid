@@ -4,5 +4,6 @@ class House():
         self.output = output
         self.cables = []
 
+# TODO add functions
     def add_cables(self, location):
         pass
