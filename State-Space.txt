@@ -1,0 +1,5 @@
+State Space:
+
+n!/r!(n-r)!
+n= X times Y minus houses and batteries present.
+r = times of batteries remaining.
