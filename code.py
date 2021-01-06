@@ -1,8 +1,24 @@
 import csv
 
 class District:
-    __init__:(self, cost-shared):
-    cost-shared = cost-shared
+    def __init__(self, cost_shared):
+        self.cost_shared = cost_shared
+
+class House:
+    def __init__(self, location, output, cables):
+        self.location = location
+        self.output = output
+        self.cables = cables
+
+    #def add_cables
+
+class Battery:
+    def __init__(self, location, capacity, houses):
+        self.location = location
+        self.capacity = capacity
+        self.houses = houses
+
+    #def add_houses
 
 
 
