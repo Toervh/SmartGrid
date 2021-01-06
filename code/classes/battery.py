@@ -4,4 +4,5 @@ class Battery:
         self.capacity = capacity
         self.houses = houses
 
-    #def add_houses
+    def add_houses(self):
+        pass
