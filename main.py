@@ -2,6 +2,7 @@ import csv
 from code.classes.battery import Battery
 from code.classes.house import House
 from code.classes.district import District
+import matplotlib.pyplot as plt
 
 
 
@@ -53,3 +54,30 @@ with open('data/Huizen&Batterijen/district_1/district-1_houses.csv') as csv_file
             line_count += 1
 
 d = District(list_house_objects,list_battery_objects)
+
+#Plotting the batteries and houses
+
+#Creating an empty plot
+x = range(60)
+y = range(60)
+plt.plot(x,y)
+plt.show()
+fig = plt.figure()
+ax1 = fig.add_subplot(111)
+
+#Adding batteries
+batteries = d.batteries
+for battery in batteries:
+    battery.x_coordinate = x
+    battery.y_coordinate = y
+    print(x, y)
+    ax1.scatter(x, y, c="r", label='batteries')
+
+#Adding houses
+houses = d.houses
+for house in houses:
+    house.x_coordinate = x
+    house.y_coordinate = y
+    ax1.scatter(x, y, c="b", label='houses')
+
+plt.show()
