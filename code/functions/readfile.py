@@ -56,7 +56,4 @@ with open('data/Huizen&Batterijen/district_1/district-1_houses.csv') as csv_file
 
 d = District(list_house_objects,list_battery_objects)
 
-x = range(60)
-y = range(60)
-plt.plot(x,y)
-plt.show()
+return d
