@@ -1,7 +1,13 @@
 import csv
 from code.classes.battery import Battery
 from code.classes.house import House
+from code.classes.district import District
 
+
+
+
+list_house_objects = []
+list_battery_objects = []
 
 with open('data/Huizen&Batterijen/district_1/district-1_batteries.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
@@ -20,7 +26,7 @@ with open('data/Huizen&Batterijen/district_1/district-1_batteries.csv') as csv_f
             y_coorinate = int(list_coordinates[1])
 
             b = Battery(x_coordinate, y_coorinate, capacity)
-
+            list_house_objects.append(b)
 
             line_count += 1
 
@@ -43,6 +49,7 @@ with open('data/Huizen&Batterijen/district_1/district-1_houses.csv') as csv_file
             print(output)
 
             h = House(x_coordinate, y_coorinate, output)
-
+            list_house_objects.append(h)
             line_count += 1
-        #print(f'Processed {line_count} lines.')
+
+d = District(list_house_objects,list_battery_objects)
