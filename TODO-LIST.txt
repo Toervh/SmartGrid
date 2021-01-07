@@ -1,0 +1,6 @@
+TODO voor 08-01-2020:
+* Functie afmaken om JSON output te genereren. (in district.py)
+* Visualisatie afronden.
+* Randomize functie schrijven.
+* Inlezen hoe lijnen getrokken moeten worden.
+* implementeren van trekken van lijnen.
