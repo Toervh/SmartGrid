@@ -1,0 +1,40 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>460</x><y>30</y><w>210</w><h>220</h></coordinates><panel_attributes>Class: House
+--
+Properties:
+ID: Int
+x coordinate: int
+y coordinate: int
+Connected to: none (int)
+Output: float
+Cables: [ ]
+--
+methods:
+kortste_weg #TODO
+add_battery (RANDOM)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>240</y><w>210</w><h>280</h></coordinates><panel_attributes>Class: Battery
+--
+Properties:
+ID: Int
+max capacity: float
+current_capacity: float
+houses_connected: [ ]
+x coordinate: int
+y coordinate: int
+--
+methods:
+add_houses
+update_capacity #TODO
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>70</y><w>160</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;220;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>270</y><w>210</w><h>270</h></coordinates><panel_attributes>Class District:
+--
+Properties:
+ID: Int
+
+
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>330</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>140;10;10;30</additional_attributes></element></diagram>
