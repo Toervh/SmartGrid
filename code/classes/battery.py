@@ -1,7 +1,7 @@
 class Battery:
-    def __init__(self, x_coordinate, y_coordinate, capacity):
-        # TODO ID generator
-        self.id = None
+    def __init__(self, id, x_coordinate, y_coordinate, capacity):
+
+        self.id = id
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
         self.capacity = capacity
