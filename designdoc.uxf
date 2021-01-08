@@ -2,8 +2,8 @@
 --
 Properties:
 ID: Int
-x coordinate: int
-y coordinate: int
+x_coordinate: int
+y_coordinate: int
 Connected to: none (int)
 Output: float
 Cables: [ ]

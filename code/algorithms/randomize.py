@@ -13,5 +13,6 @@ def random_assignment(district):
         random_battery = random.choice(district.batteries)
         house.add_connected_battery(random_battery.id)
         random_battery.add_houses(house.id)
+        random_battery.add_houses_objects(house)
 
     return non_random_district

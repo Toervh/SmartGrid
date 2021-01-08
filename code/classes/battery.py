@@ -6,14 +6,24 @@ class Battery:
         self.y_coordinate = y_coordinate
         self.capacity = capacity
         self.houses = []
+        self.houses_objects = []
 
     def add_houses(self, house_id):
         self.houses.append(house_id)
-    
+
+    def add_houses_objects(self, house):
+        self.houses_objects.append(house)
+
     def return_x(self):
         list_x = list(self.x_coordinate)
         return list_x
 
+    def __repr__(self):
+        return self.id
+
+    def __str__(self):
+        return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)
+
     def return_y(self):
         list_y = list(self.y_coordinate)
-        return list_y 
+        return list_y

@@ -15,3 +15,6 @@ class House:
 # TODO add cables function
     def add_cables(self, location):
         pass
+
+    def __str__(self):
+        return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)
