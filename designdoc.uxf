@@ -6,24 +6,31 @@ x_coordinate: int
 y_coordinate: int
 Connected to: none (int)
 Output: float
+connected_battery: (object)
 Cables: [ ]
 --
 methods:
-kortste_weg #TODO
-add_battery (RANDOM)
+add_cables: #TODO
+kortste_weg: #TODO
+add_connected_battery: adds a battery object to connected_battery
 
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>240</y><w>210</w><h>280</h></coordinates><panel_attributes>Class: Battery
 --
 Properties:
-ID: Int
-max capacity: float
+id: Int
+x_coordinate: int
+y_coordinate: int
+capacity: float
 current_capacity: float
-houses_connected: [ ]
-x coordinate: int
-y coordinate: int
+houses: [list of house ID's]
+houses_objects: [list of house Objects]
+
 --
 methods:
 add_houses
+add_house_objects
+return_x
+return_y
 update_capacity #TODO
 
 
@@ -32,10 +39,15 @@ update_capacity #TODO
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>70</y><w>160</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;220;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>270</y><w>210</w><h>270</h></coordinates><panel_attributes>Class District:
 --
 Properties:
-ID: Int
+id: Int
+houses: [list of house objects]
+batteries: [list of battery objects]
+costs_shared: None #TODO
 
 
 --
 methods:
+print_district: prints all houses and batteries within district to terminal.
+dict_me: turns all houses and batteries into a logical dictionary and outputs that information to a JSON file.
 out_json
 </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>330</y><w>160</w><h>50</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>140;10;10;30</additional_attributes></element></diagram>

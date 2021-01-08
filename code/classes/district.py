@@ -42,4 +42,3 @@ class District:
 
         with open('json.txt', 'w') as outfile:
             json.dump(district_list, outfile, indent=4)
-

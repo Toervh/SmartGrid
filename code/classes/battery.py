@@ -5,6 +5,7 @@ class Battery:
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
         self.capacity = capacity
+        self.current_capacity = 0
         self.houses = []
         self.houses_objects = []
 
@@ -27,3 +28,5 @@ class Battery:
     def return_y(self):
         list_y = list(self.y_coordinate)
         return list_y
+
+    #TODO implement update capacity

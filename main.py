@@ -6,7 +6,7 @@ from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import random_assignment
 from pprint import pprint
 import matplotlib.pyplot as plt
-#rom bokeh.plotting import figure, output_file, show
+
 
 if __name__ == '__main__':
     list_battery_objects = load_battery_file('data/Huizen&Batterijen/district_1/district-1_batteries.csv')
