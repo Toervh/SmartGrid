@@ -41,7 +41,7 @@ def load_house_file(filename):
                 y_coorinate = row[1]
                 output = float(row[2])
 
-                h = House(x_coordinate, y_coorinate, output)
+                h = House(line_count, x_coordinate, y_coorinate, output)
                 list_house_objects.append(h)
                 line_count += 1
 

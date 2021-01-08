@@ -4,9 +4,14 @@ import copy
 
 
 
-def random_assignment(district, batteries):
+def random_assignment(district):
     """
     Randomly assign each node with one of the possibilities.
     """
-    for house in district.houses:
-        house.add_connected_battery(random.choice(batteries))
+    non_random_district = district
+    for house in non_random_district.houses:
+        random_battery = random.choice(district.batteries)
+        house.add_connected_battery(random_battery)
+        random_battery.add_houses(house.id)
+
+    return non_random_district

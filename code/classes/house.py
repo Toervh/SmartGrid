@@ -1,5 +1,6 @@
 class House:
-    def __init__(self, x_coordinate, y_coordinate, output):
+    def __init__(self, id, x_coordinate, y_coordinate, output):
+        self.id = id
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
         self.output = output
