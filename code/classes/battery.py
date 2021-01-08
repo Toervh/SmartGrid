@@ -9,3 +9,11 @@ class Battery:
 
     def add_houses(self, house_id):
         self.houses.append(house_id)
+    
+    def return_x(self):
+        list_x = list(self.x_coordinate)
+        return list_x
+
+    def return_y(self):
+        list_y = list(self.y_coordinate)
+        return list_y 
