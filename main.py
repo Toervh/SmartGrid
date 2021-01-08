@@ -19,5 +19,4 @@ if __name__ == '__main__':
     # pprint(vars(d))
     randomized_district = random_assignment(d)
     print_district(randomized_district)
-    b = Battery()
-    print(b.__dict__)
+    
