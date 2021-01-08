@@ -9,3 +9,6 @@ class Battery:
 
     def add_houses(self, house_id):
         self.houses.append(house_id)
+
+    def __repr__(self):
+        return self.id
