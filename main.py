@@ -4,6 +4,7 @@ from code.classes.house import House
 from code.classes.district import District
 from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import random_assignment
+from visualise import visualise
 from pprint import pprint
 import matplotlib.pyplot as plt
 
@@ -16,4 +17,5 @@ if __name__ == '__main__':
     d = District(id, list_house_objects, list_battery_objects)
 
     randomized_district = random_assignment(d)
-    randomized_district.dict_me()
+    a = visualise(randomized_district)
+    print(a)

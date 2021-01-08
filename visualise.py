@@ -5,49 +5,51 @@ from code.classes.district import District
 import matplotlib.pyplot as plt
 from bokeh.plotting import figure, output_file, show
 
-output_file("plot.html")
+def visualise(district):
+    list_houses = list(district.houses)
+    list_houses_x_coordinates = []
+    for house in list_houses:
+        list_houses_x_coordinates.append(house.x_coordinate)
+    list_houses_y_coordinates = []
+    for house in list_houses:
+        list_houses_y_coordinates.append(house.y_coordinate)
 
-x_battery_list = [1, 2]
-y_battery_list = [3, 6]
+    list_batteries = list(district.batteries)
+    list_batteries_x_coordinates = []
+    for battery in list_batteries:
+        list_batteries_x_coordinates.append(battery.x_coordinate)
+    list_batteries_y_coordinates = []
+    for battery in list_batteries:
+        list_batteries_y_coordinates.append(battery.y_coordinate)
 
-x_house_list = [1, 2, 3, 4, 5]
-y_house_list = [2, 4, 3, 1, 5]
+    output_file("plot.html")
 
-#plot the points 
-p = figure(title="Power Grid", x_axis_label='x', y_axis_label='y')
-p.square(x_battery_list, y_battery_list, size=20, color="blue", alpha=0.5)
-p.circle(x_house_list, y_house_list, size=10, color="red", alpha=0.5)
+    p = figure(title="Power Grid", x_axis_label='x', y_axis_label='y')
+    p.square(list_batteries_x_coordinates, list_batteries_y_coordinates, size=20, color="blue", alpha=0.5)
+    p.circle(list_houses_x_coordinates, list_houses_y_coordinates, size=10, color="red", alpha=0.5)
 
-battery_dict = {
-    0: [(1,2),(2,4)], 
-    1: [(3,3),(4,1),(5,5)]
-    }
 
-i = 0
-current_battery = battery_dict.get(0, None)
-current_house = current_battery[0]
+    battery_dict = {}
+    for battery in list_batteries:
+        list_house = []
+        battery_dict[battery.id] = list_house
+        for house in battery.houses_objects:
+            list_house.append((house.x_coordinate, house.y_coordinate))
 
-while i < len(battery_dict):
-    current_battery = battery_dict.get(i, None)
-    j = 0
-    while j < len(current_battery):
-        current_house = current_battery[j]
-        p.step([x_battery_list[i], current_house[0]], [y_battery_list[i], current_house[1]], line_width=1)
-        j+=1
-    i+=1
+    print(battery_dict)
 
-#plot lines between batteries and houses
-#battery_counter = 0
-#house_counter = 0
+    i = 1
 
-#for battery in batteries:
-#    for house in houses:
-#        p.step([battery_x[battery_counter], house_x[house_counter]], [battery_y[battery_counter], house_y[house_counter]], line_width=1)
-#        house_counter+=1
-#    battery_counter+=1
-    
-#print results
-show(p)
+    while i < len(battery_dict):
+        current_battery = battery_dict.get(i, None)
+        j = 0
+        while j < len(current_battery):
+            current_house = current_battery[j]
+            p.step([list_batteries_x_coordinates[i], current_house[0]], [list_batteries_y_coordinates[i], current_house[1]], line_width=1)
+            j+=1
+        i+=1
+
+    return(show(p))
 
 
 
