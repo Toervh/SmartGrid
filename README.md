@@ -37,7 +37,7 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
   * Op dit moment worden de huizen willekeurig per batterij opgesplitst.
   * Er is nog geen rekening gehouden met maximum-capaciteit van de batterij en de kosten van de kabels. (TODO)
 * Datavisualisatie
-  * Momenteel wordt de koppeling van batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
+  * Momenteel wordt de aansluiting van de huizen op de batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
 
 ## Benodigdheden
 * .json library
