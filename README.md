@@ -28,3 +28,15 @@ PowerStar	450	    900
 Imerse-II	900	1350  
 Imerse-III	1800	1800    
 Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je mag er zoveel gebruiken als je wil en kunnen op ieder gridpunt zonder huis geplaatst worden.
+
+## Huidige mogelijkheden:
+* Dataverwerking
+  Data van de locaties van de huizen en de gegenereerde stroomopwekking wordt ingelezen en in een .json file overzichtelijk gemaakt.
+* Willekeurige verbinding
+  Op dit moment worden de huizen willekeurig per batterij opgesplitst, er is nog geen rekening gehouden met maximum-capaciteit van de batterij en de kosten van de kabels.
+* Datavisualisatie
+Momenteel wordt de koppeling van batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
+
+## Benodigdheden
+* .json library
+* bokeh library (pip3 install bokeh)
