@@ -31,11 +31,13 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
 
 ## Huidige mogelijkheden:
 * Dataverwerking
-  Data van de locaties van de huizen en de gegenereerde stroomopwekking wordt ingelezen en in een .json file overzichtelijk gemaakt.
+  * Data van de locaties van de huizen en de gegenereerde stroomopwekking wordt ingelezen 
+  * Output is in een .json file overzichtelijk gemaakt.
 * Willekeurige verbinding
-  Op dit moment worden de huizen willekeurig per batterij opgesplitst, er is nog geen rekening gehouden met maximum-capaciteit van de batterij en de kosten van de kabels.
+  * Op dit moment worden de huizen willekeurig per batterij opgesplitst.
+  * Er is nog geen rekening gehouden met maximum-capaciteit van de batterij en de kosten van de kabels. (TODO)
 * Datavisualisatie
-Momenteel wordt de koppeling van batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
+  * Momenteel wordt de koppeling van batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
 
 ## Benodigdheden
 * .json library
