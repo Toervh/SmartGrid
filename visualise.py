@@ -45,7 +45,7 @@ def visualise(district):
         j = 0
         while j < len(current_battery):
             current_house = current_battery[j]
-            p.step([list_batteries_x_coordinates[i], current_house[0]], [list_batteries_y_coordinates[i], current_house[1]], line_width=1)
+            p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
             j+=1
         i+=1
 
