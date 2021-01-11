@@ -38,10 +38,8 @@ def visualise(district):
 
     print(battery_dict)
 
-    i = 1
-
-    while i < len(battery_dict):
-        current_battery = battery_dict.get(i, None)
+    for i in battery_dict.keys():
+    current_battery = battery_dict.get(i, None)
         j = 0
         while j < len(current_battery):
             current_house = current_battery[j]
