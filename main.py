@@ -17,5 +17,6 @@ if __name__ == '__main__':
     d = District(id, list_house_objects, list_battery_objects)
 
     randomized_district = random_assignment(d)
-    a = visualise(randomized_district)
-    print(a)
+    # a = visualise(randomized_district)
+    for battery in randomized_district.batteries:
+        print(battery.capacity)

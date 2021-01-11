@@ -4,8 +4,8 @@ class Battery:
         self.id = id
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
-        self.capacity = capacity
-        self.current_capacity = 0
+        self.capacity = float(capacity)
+        self.current_capacity = 0.0
         self.houses = []
         self.houses_objects = []
 
@@ -15,12 +15,28 @@ class Battery:
     def add_houses_objects(self, house):
         self.houses_objects.append(house)
 
+    def check_capacity(self, output):
+
+
+        fl_output = float(output)
+
+        if self.current_capacity + fl_output > self.capacity:
+            # print(f"battery: {self.id} is at maximum capcity")
+            return False
+
+    def update_capacity(self, output):
+
+        fl_output = float(output)
+        self.current_capacity += fl_output
+        return True
+
+
     def return_x(self):
         list_x = list(self.x_coordinate)
         return list_x
 
     def __repr__(self):
-        return self.id
+        return str(self.current_capacity)
 
     def __str__(self):
         return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)

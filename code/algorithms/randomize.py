@@ -9,10 +9,23 @@ def random_assignment(district):
     Randomly assign each node with one of the possibilities.
     """
     non_random_district = district
+
     for house in non_random_district.houses:
-        random_battery = random.choice(district.batteries)
+        list_available_batteries = []
+
+
+        for battery in district.batteries:
+            if not battery.check_capacity(house.output):
+                list_available_batteries.append(battery)
+
+        print(f"available batteries: {list_available_batteries}")
+        random_battery = random.choice(list_available_batteries)
+
         house.add_connected_battery(random_battery.id)
         random_battery.add_houses(house.id)
         random_battery.add_houses_objects(house)
+        random_battery.update_capacity(house.output)
 
-    return non_random_district
+
+    random_district = non_random_district
+    return random_district
