@@ -33,11 +33,16 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
 * Dataverwerking
   * Data van de locaties van de huizen en de gegenereerde stroomopwekking wordt ingelezen 
   * Output is in een .json file overzichtelijk gemaakt.
-* Willekeurige verbinding
-  * Op dit moment worden de huizen willekeurig per batterij opgesplitst.
-  * Er is nog geen rekening gehouden met maximum-capaciteit van de batterij en de kosten van de kabels. (TODO)
+* Classes:
+  * De classes zijn batterijen en huizen die in de superclass van district worden opgenomen. Met de algoritmes van random/closest wordt er een instantie van district gemaakt die weergegeven wordt door Bokeh.
+  * Cable is een klasse die wordt geïnstantieerd door de algoritmes van 
+* De districten kunnen op twee manieren onderverdeeld worden.
+  * Random:
+    * Random sluit de huizen aan op degene die nog in de batterij passen qua capaciteit. Uit deze batterijen wordt willekeurig er een aan het huis toegewezen.
+  * Closest:
+    * Closest sluit de huizen aan op de batterijen die deze nog qua capaciteit aan kunnen. Uit deze batterijen wordt de kortste route daarheen gekozen.
 * Datavisualisatie
-  * Momenteel wordt de aansluiting van de huizen op de batterijen weergegeven door middel van scatterplots en step graphs in Bokeh.
+  * Momenteel wordt de aansluiting van de huizen op de batterijen weergegeven door middel van scatterplots en step graphs in visualise.py met Bokeh.
 
 ## Benodigdheden
 * .json library
