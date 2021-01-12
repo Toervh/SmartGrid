@@ -1,9 +1,6 @@
 import random
 import copy
 
-
-
-
 def random_assignment(district):
     """
     Randomly assign each node with one of the possibilities.
@@ -28,4 +25,5 @@ def random_assignment(district):
 
 
     random_district = non_random_district
+
     return random_district
