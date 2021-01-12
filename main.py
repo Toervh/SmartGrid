@@ -22,5 +22,5 @@ if __name__ == '__main__':
 
     a = visualise(randomized_district)
 
-    print(randomized_district.costs_shared)
+    print(f"Cost shared: {randomized_district.costs_shared}")
 
