@@ -8,6 +8,9 @@ class District:
         self.costs_shared = 0
         self.cables_coordinates = []
 
+        for battery in self.batteries:
+            self.costs_shared += 5000
+
 #Add cables function moved to cable.py
     # def add_cable(self, x_coordinate, y_coordinate, house):
     #     new_coordinates = (x_coordinate, y_coordinate)

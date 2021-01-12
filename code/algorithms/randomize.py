@@ -10,13 +10,13 @@ def random_assignment(district):
 
     for house in non_random_district.houses:
         list_available_batteries = []
-        print(f"house output: {house.output}")
+        # print(f"house output: {house.output}")
 
         for battery in district.batteries:
             if battery.check_capacity(house.output):
                 list_available_batteries.append(battery)
 
-        print(f"available batteries: {list_available_batteries}")
+        # print(f"available batteries: {list_available_batteries}")
         random_battery = random.choice(list_available_batteries)
 
         house.add_connected_battery(random_battery.id)
@@ -24,7 +24,7 @@ def random_assignment(district):
         random_battery.add_houses_objects(house)
         random_battery.update_capacity(house.output)
 
-        cable = Cable(house.x_coordinate, house.y_coordinate, random_battery.x_coordinate, random_battery.y_coordinate, non_random_district, house)
+        cable = Cable(house.x_coordinate, house.y_coordinate, random_battery.x_coordinate, random_battery.y_coordinate, non_random_district, house, random_battery)
 
     random_district = non_random_district
 

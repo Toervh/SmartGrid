@@ -8,6 +8,7 @@ class Battery:
         self.current_capacity = 0.0
         self.houses = []
         self.houses_objects = []
+        self.cables = []
 
     def add_houses(self, house_id):
         self.houses.append(house_id)

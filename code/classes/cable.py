@@ -1,5 +1,5 @@
 class Cable:
-    def __init__(self, start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y_coordinate, district, house):
+    def __init__(self, start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y_coordinate, district, house, battery):
         self.x_coordinates = []
         self.y_coordinates = []
         self.xy_coordinates = []
@@ -33,10 +33,13 @@ class Cable:
     # def add_cables(self, house, district):
 
         for cable in self.xy_coordinates:
-            if cable in district.cables_coordinates:
+            if cable in battery.cables:
                 pass
 
             house.cables.append((self.x_coordinates, self.y_coordinates))
 
             district.cables_coordinates.append(self.xy_coordinates)
+            battery.cables.append(self.xy_coordinates)
             district.costs_shared += 9
+
+        print(f"house: {house.id}, cables: {self.xy_coordinates}")
