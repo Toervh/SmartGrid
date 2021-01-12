@@ -42,4 +42,4 @@ class Cable:
             battery.cables.append(self.xy_coordinates)
             district.costs_shared += 9
 
-        print(f"house: {house.id}, cables: {self.xy_coordinates}")
+        # print(f"house: {house.id}, cables: {self.xy_coordinates}")

@@ -37,8 +37,8 @@ def load_house_file(filename):
             if line_count == 0:
                 line_count += 1
             else:
-                x_coordinate = row[0]
-                y_coorinate = row[1]
+                x_coordinate = int(row[0])
+                y_coorinate = int(row[1])
                 output = float(row[2])
 
                 h = House(line_count, x_coordinate, y_coorinate, output)

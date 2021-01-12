@@ -37,16 +37,16 @@ def visualise(district):
         for house in battery.houses_objects:
             list_house.append((house.x_coordinate, house.y_coordinate))
 
-    # print(f"battery dict: {battery_dict}")
+    print(f"battery dict: {battery_dict}")
 
-    # for i in battery_dict.keys():
-    #     current_battery = battery_dict.get(i, None)
-    #     j = 0
-    #     while j < len(current_battery):
-    #         current_house = current_battery[j]
-    #         p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
-    #         j+=1
-    #     i+=1
+    for i in battery_dict.keys():
+        current_battery = battery_dict.get(i, None)
+        j = 0
+        while j < len(current_battery):
+            current_house = current_battery[j]
+            p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
+            j+=1
+        i+=1
 
 
     # cables = district.cables_coordinates
@@ -62,16 +62,16 @@ def visualise(district):
     # print(end[0])
     # print(end[1])
 
-    cables = district.cables_coordinates
-    for current_cable in cables:
-        begin_coordinates = current_cable[0]
-        end_coordinates = current_cable[-1]
-        begin_x = begin_coordinates[0]
-        begin_y = int(begin_coordinates[1])
-        end_x = end_coordinates[0]
-        end_y = end_coordinates[1]
-        p.step([begin_x, end_x], [begin_y, end_y], line_width=1)
-    
+    # cables = district.cables_coordinates
+    # for current_cable in cables:
+    #     begin_coordinates = current_cable[0]
+    #     end_coordinates = current_cable[-1]
+    #     begin_x = begin_coordinates[0]
+    #     begin_y = int(begin_coordinates[1])
+    #     end_x = end_coordinates[0]
+    #     end_y = end_coordinates[1]
+    #     p.step([begin_x, end_x], [begin_y, end_y], line_width=1)
+    #
     return(show(p))
 
 
