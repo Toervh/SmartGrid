@@ -1,4 +1,5 @@
 import random
+from code.classes.cable import Cable
 import copy
 
 def random_assignment(district):
@@ -23,6 +24,7 @@ def random_assignment(district):
         random_battery.add_houses_objects(house)
         random_battery.update_capacity(house.output)
 
+        cable = Cable(house.x_coordinate, house.y_coordinate, random_battery.x_coordinate, random_battery.y_coordinate, non_random_district, house)
 
     random_district = non_random_district
 

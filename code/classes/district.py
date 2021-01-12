@@ -8,17 +8,18 @@ class District:
         self.costs_shared = 0
         self.cables_coordinates = []
 
-    def add_cable(self, x_coordinate, y_coordinate, house):
-        new_coordinates = (x_coordinate, y_coordinate)
-        print(new_coordinates)
-
-        for cable in self.cables_coordinates:
-            if new_coordinates == cable:
-                pass
-
-        self.cables_coordinates.append((x_coordinate, y_coordinate))
-        house.cables.append((x_coordinate, y_coordinate))
-        self.costs_shared += 9
+#Add cables function moved to cable.py
+    # def add_cable(self, x_coordinate, y_coordinate, house):
+    #     new_coordinates = (x_coordinate, y_coordinate)
+    #     print(new_coordinates)
+    #
+    #     for cable in self.cables_coordinates:
+    #         if new_coordinates == cable:
+    #             pass
+    #
+    #     self.cables_coordinates.append((x_coordinate, y_coordinate))
+    #     house.cables.append((x_coordinate, y_coordinate))
+    #     self.costs_shared += 9
 
 
     def print_district(self):

@@ -1,4 +1,6 @@
-
+"""
+Function for laying cables, is replaced by cable Class
+"""
 
 def lay_cables(district):
     list_houses = list(district.houses)

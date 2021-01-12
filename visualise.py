@@ -36,7 +36,7 @@ def visualise(district):
         for house in battery.houses_objects:
             list_house.append((house.x_coordinate, house.y_coordinate))
 
-    print(f"battery dict: {battery_dict}")
+    # print(f"battery dict: {battery_dict}")
 
     for i in battery_dict.keys():
         current_battery = battery_dict.get(i, None)
