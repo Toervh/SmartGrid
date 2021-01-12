@@ -16,13 +16,10 @@ class Battery:
         self.houses_objects.append(house)
 
     def check_capacity(self, output):
-
-
         fl_output = float(output)
-
         if self.current_capacity + fl_output > self.capacity:
-            # print(f"battery: {self.id} is at maximum capcity")
             return False
+        return True
 
     def update_capacity(self, output):
 
@@ -44,5 +41,3 @@ class Battery:
     def return_y(self):
         list_y = list(self.y_coordinate)
         return list_y
-
-    #TODO implement update capacity

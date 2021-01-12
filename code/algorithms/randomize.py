@@ -12,10 +12,10 @@ def random_assignment(district):
 
     for house in non_random_district.houses:
         list_available_batteries = []
-
+        print(f"house output: {house.output}")
 
         for battery in district.batteries:
-            if not battery.check_capacity(house.output):
+            if battery.check_capacity(house.output):
                 list_available_batteries.append(battery)
 
         print(f"available batteries: {list_available_batteries}")

@@ -1,5 +1,5 @@
-TODO voor 08-01-2020:
+TODO voor 13-01-2020:
 
-* Visualisatie afronden. (semi done, enkele huizen worden niet verbonden
-
-
+* Visualisatie van maximumcapciteit maken.
+* Kabels als object (denk ik) aanmaken en zorgen dat die "gelegd worden".
+* Functie schrijven die kosten berekent voor de kabels.

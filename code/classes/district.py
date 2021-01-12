@@ -5,7 +5,19 @@ class District:
         self.id = id
         self.houses = houses
         self.batteries = batteries
-        self.costs_shared = None
+        self.costs_shared = 0
+        self.cables_coordinates = []
+
+    def add_cable(self, x_coordinate, y_coordinate, house):
+        new_coordinates = (x_coordinate, y_coordinate)
+        for cable in self.cables_coordinates:
+            if new_coordinates == cable:
+                pass
+
+        self.cables_coordinates.append((x_coordinate, y_coordinate))
+        house.cables.append((x_coordinate, y_coordinate))
+        self.costs_shared += 9
+
 
     def print_district(self):
         for battery in self.batteries:
