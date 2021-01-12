@@ -11,6 +11,7 @@ class District:
     def add_cable(self, x_coordinate, y_coordinate, house):
         new_coordinates = (x_coordinate, y_coordinate)
         print(new_coordinates)
+
         for cable in self.cables_coordinates:
             if new_coordinates == cable:
                 pass

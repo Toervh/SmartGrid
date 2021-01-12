@@ -14,6 +14,6 @@ class Cable:
             self.x_coordinates.append(end_x_coordinate)
 
 if __name__ == '__main__':
-    a = Cable(4,4,2,2)
+    a = Cable(22,2,4,40)
     print(a.x_coordinates)
     print(a.y_coordinates)
