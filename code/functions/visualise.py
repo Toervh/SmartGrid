@@ -7,6 +7,16 @@ import matplotlib.pyplot as plt
 from bokeh.plotting import figure, output_file, show
 
 def visualise(district):
+"""
+Visualise uses Bokeh to draw the grid with the houses.
+The datastructure for the houses is a dict of a list of sets of coordinates.
+The dict keys are the batteries, the list is the list of houses connected, and its
+elements are tuples of the coordinates of the houses.
+It uses scatterplot to draw the houses and uses
+steps to draw a Manhattan grid from the location of the 
+house to the battery.
+"""
+    # Makes a list of the houses to scatterplot.
     list_houses = list(district.houses)
     list_houses_x_coordinates = []
     for house in list_houses:
@@ -15,6 +25,7 @@ def visualise(district):
     for house in list_houses:
         list_houses_y_coordinates.append(house.y_coordinate)
 
+    # Makes a list of the batteries to scatterplot.
     list_batteries = list(district.batteries)
     list_batteries_x_coordinates = []
     for battery in list_batteries:
@@ -25,11 +36,12 @@ def visualise(district):
 
     output_file("plot.html")
 
+    # Instantiates the graph and draws the scatterplot.
     p = figure(title="Power Grid", x_axis_label='x', y_axis_label='y')
     p.square(list_batteries_x_coordinates, list_batteries_y_coordinates, size=20, color="blue", alpha=0.5)
     p.circle(list_houses_x_coordinates, list_houses_y_coordinates, size=10, color="red", alpha=0.5)
 
-
+    # Creates the dict of lists of tuples.
     battery_dict = {}
     for battery in list_batteries:
         list_house = []
@@ -39,6 +51,7 @@ def visualise(district):
 
     print(f"battery dict: {battery_dict}")
 
+    # Draws the cables, iterating over the keys and the houses.
     for i in battery_dict.keys():
         current_battery = battery_dict.get(i, None)
         j = 0
@@ -47,31 +60,6 @@ def visualise(district):
             p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
             j+=1
         i+=1
-
-
-    # cables = district.cables_coordinates
-    # current_cable = cables[0]
-    # begin = current_cable[0]
-    # end = current_cable[-1]
-    # print(current_cable)
-    # print(begin)
-    # print(begin[0])
-    # print(begin[1])
-    # print(type(begin[1]))
-    # print(end)
-    # print(end[0])
-    # print(end[1])
-
-    # cables = district.cables_coordinates
-    # for current_cable in cables:
-    #     begin_coordinates = current_cable[0]
-    #     end_coordinates = current_cable[-1]
-    #     begin_x = begin_coordinates[0]
-    #     begin_y = int(begin_coordinates[1])
-    #     end_x = end_coordinates[0]
-    #     end_y = end_coordinates[1]
-    #     p.step([begin_x, end_x], [begin_y, end_y], line_width=1)
-    #
     return(show(p))
 
-
+    
