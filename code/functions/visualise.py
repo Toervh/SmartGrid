@@ -7,15 +7,15 @@ import matplotlib.pyplot as plt
 from bokeh.plotting import figure, output_file, show
 
 def visualise(district):
-"""
-Visualise uses Bokeh to draw the grid with the houses.
-The datastructure for the houses is a dict of a list of sets of coordinates.
-The dict keys are the batteries, the list is the list of houses connected, and its
-elements are tuples of the coordinates of the houses.
-It uses scatterplot to draw the houses and uses
-steps to draw a Manhattan grid from the location of the 
-house to the battery.
-"""
+    """
+    Visualise uses Bokeh to draw the grid with the houses.
+    The datastructure for the houses is a dict of a list of sets of coordinates.
+    The dict keys are the batteries, the list is the list of houses connected, and its
+    elements are tuples of the coordinates of the houses.
+    It uses scatterplot to draw the houses and uses
+    steps to draw a Manhattan grid from the location of the
+    house to the battery.
+    """
     # Makes a list of the houses to scatterplot.
     list_houses = list(district.houses)
     list_houses_x_coordinates = []

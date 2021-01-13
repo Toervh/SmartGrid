@@ -1,14 +1,14 @@
 from code.classes.cable import Cable
 
 def closest_assignment(district):
-"""
-closest chooses the shortest distance
-between the current house and the batteries.
-Checks the capacity and calculates the distance.
-"""
+    """
+    closest chooses the shortest distance
+    between the current house and the batteries.
+    Checks the capacity and calculates the distance.
+    """
     # Use this to randomize
-    list_houses = list(district.houses)
-    random.shuffle(list_houses)
+    # list_houses = list(district.houses)
+    # random.shuffle(list_houses)
 
     # Loops for every house
     for house in district.houses:

@@ -6,6 +6,7 @@ from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import random_assignment
 from code.algorithms.closest import closest_assignment
 from code.algorithms.new_closest import new_closest_assignment
+from code.functions.lay_cables import create_cable
 from code.classes.cable import Cable
 from code.functions.visualise import visualise
 from pprint import pprint
@@ -23,9 +24,6 @@ if __name__ == '__main__':
 
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    # closest_district = closest_assignment(d)
-    # a = visualise(closest_district)
-    # print(f"Cost shared: {closest_district.costs_shared}")
     closest_district = new_closest_assignment(d)
     a = visualise(closest_district)
     print(f"Cost shared: {closest_district.costs_shared}")
@@ -36,7 +34,7 @@ if __name__ == '__main__':
     # print(f"Cost shared: {randomized_district.costs_shared}")
 
     # ****------------------RUNS MULTIPLE RANDOM---------------------****
-    run_multiple_random(list_house_objects, list_battery_objects)
+    # run_multiple_random(list_house_objects, list_battery_objects)
     # run_multiple_random(list_house_objects, list_battery_objects)
 
     # ****------------------RUNS MULTIPLE RANDOMIZED CLOSEST---------****

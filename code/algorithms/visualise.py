@@ -8,9 +8,9 @@ from bokeh.plotting import figure, output_file, show
 
 def visualise(district):
 """
-Visualise creates the houses and batteries by bokeh scatterplot.
-It will then create a dict of a list of tuples with the cable start/endpoint
-Output is the plot.html file.
+    Visualise creates the houses and batteries by bokeh scatterplot.
+    It will then create a dict of a list of tuples with the cable start/endpoint
+    Output is the plot.html file.
 """
     # Creates list of house coordinates 
     list_houses = list(district.houses)
