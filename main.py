@@ -21,18 +21,18 @@ if __name__ == '__main__':
     d = District(id, list_house_objects, list_battery_objects)
 
 
-    # ****RUNS CLOSEST DISTRICT****
+    # ****------------------RUNS CLOSEST DISTRICT--------------------****
     # closest_district = closest_assignment(d)
     # a = visualise(closest_district)
     # print(f"Cost shared: {closest_district.costs_shared}")
 
-    # ****RUNS RANDOM DISTRICT****
+    # ****------------------RUNS RANDOM DISTRICT---------------------****
     # randomized_district = random_assignment(d)
     # a = visualise(randomized_district)
     # print(f"Cost shared: {randomized_district.costs_shared}")
 
-    # ****RUNS MULTIPLE RANDOM****
+    # ****------------------RUNS MULTIPLE RANDOM---------------------****
     run_multiple_random(list_house_objects, list_battery_objects)
 
-    # ****RUNS MULTIPLE RANDOMIZED CLOSEST****
+    # ****------------------RUNS MULTIPLE RANDOMIZED CLOSEST---------****
     # multiple_closest = run_multiple_closest(d)
