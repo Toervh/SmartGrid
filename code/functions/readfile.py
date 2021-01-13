@@ -5,6 +5,7 @@ from code.classes.district import District
 
 
 def load_battery_file(filename):
+    """Loads the batteries into objects from .csv files."""
     list_battery_objects = []
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -29,6 +30,7 @@ def load_battery_file(filename):
         return list_battery_objects
 
 def load_house_file(filename):
+    """Loads the house objects from the csv files."""
     with open(filename) as csv_file:
         list_house_objects = []
         csv_reader = csv.reader(csv_file, delimiter=',')

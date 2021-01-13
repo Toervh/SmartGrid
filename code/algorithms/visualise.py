@@ -8,15 +8,11 @@ from bokeh.plotting import figure, output_file, show
 
 def visualise(district):
 """
-Visualise uses Bokeh to draw the grid with the houses.
-The datastructure for the houses is a dict of a list of sets of coordinates.
-The dict keys are the batteries, the list is the list of houses connected, and its
-elements are tuples of the coordinates of the houses.
-It uses scatterplot to draw the houses and uses
-steps to draw a Manhattan grid from the location of the 
-house to the battery.
+Visualise creates the houses and batteries by bokeh scatterplot.
+It will then create a dict of a list of tuples with the cable start/endpoint
+Output is the plot.html file.
 """
-    # Makes a list of the houses to scatterplot.
+    # Creates list of house coordinates 
     list_houses = list(district.houses)
     list_houses_x_coordinates = []
     for house in list_houses:
@@ -25,7 +21,7 @@ house to the battery.
     for house in list_houses:
         list_houses_y_coordinates.append(house.y_coordinate)
 
-    # Makes a list of the batteries to scatterplot.
+    # Creates list of battery coordinates
     list_batteries = list(district.batteries)
     list_batteries_x_coordinates = []
     for battery in list_batteries:
@@ -36,12 +32,12 @@ house to the battery.
 
     output_file("plot.html")
 
-    # Instantiates the graph and draws the scatterplot.
+    # Instantiates the figure and creates scatterplot
     p = figure(title="Power Grid", x_axis_label='x', y_axis_label='y')
     p.square(list_batteries_x_coordinates, list_batteries_y_coordinates, size=20, color="blue", alpha=0.5)
     p.circle(list_houses_x_coordinates, list_houses_y_coordinates, size=10, color="red", alpha=0.5)
 
-    # Creates the dict of lists of tuples.
+    # Creates the dictionary with a list with the house coordinates
     battery_dict = {}
     for battery in list_batteries:
         list_house = []
@@ -51,7 +47,7 @@ house to the battery.
 
     # print(f"battery dict: {battery_dict}")
 
-    # Draws the cables, iterating over the keys and the houses.
+    # Loops over the dict and the elements of the list, picks out the 1st and 2nd elements of the tuple (house coordinates)
     for i in battery_dict.keys():
         current_battery = battery_dict.get(i, None)
         j = 0
@@ -60,6 +56,7 @@ house to the battery.
             p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
             j+=1
         i+=1
+
     return(show(p))
 
-    
+

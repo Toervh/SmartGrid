@@ -29,6 +29,12 @@ Imerse-II	900	1350
 Imerse-III	1800	1800    
 Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je mag er zoveel gebruiken als je wil en kunnen op ieder gridpunt zonder huis geplaatst worden.
 
+## Gebruik:
+* Main.py:
+  * Met main.py run je de mogelijkheden. 
+  * De opties zijn weggecomment. 
+  * Op het moment dat je een optie wil gebruiken moet je hetgeen wat je wil gebruiken als code weer neer moet zetten en python3 main.py runnen.
+
 ## Huidige mogelijkheden:
 * Dataverwerking
   * Data van de locaties van de huizen en de gegenereerde stroomopwekking wordt ingelezen 

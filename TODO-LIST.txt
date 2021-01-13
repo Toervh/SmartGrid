@@ -1,4 +1,9 @@
-TODO voor 13-01-2020:
+TODO voor 08-01-2020:
+* Functie afmaken om JSON output te genereren. (in district.py)
+* Visualisatie afronden.
+* Randomize functie schrijven.
+* Inlezen hoe lijnen getrokken moeten worden.
+* implementeren van trekken van lijnen.
 
 * Visualisatie van maximumcapciteit maken.
 
@@ -6,3 +11,7 @@ TODO voor 13-01-2020:
 * Swap code schrijven (om huizen en hun connectie met elkaar te vergelijken en te swappen als de andere combinatie goedkoper is)
 * Kortste Route en Swap combineren.
 * UML File maken? voor visualisatie
+** Sorteren van de lijsten
+* Maak een batterijlijst aan met X en Y coördinaten apart.
+* Filter een lijst van de randomized functie om een lijst te creëren van X/Y coördinaten huizen die alleen die desbetreffende ID heeft van de batterij die aangesloten is. filter=0 ofzo en dan counteren
+* trek lijnen dmv bokeh.steps van batterij naar de huizen door deze lijsten te counteren (x-coordinaat(counter), y-coordinaat(counter)
