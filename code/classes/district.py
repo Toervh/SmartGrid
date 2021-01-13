@@ -1,4 +1,5 @@
 import json
+import random
 
 class District:
     def __init__(self, id, houses, batteries):
@@ -19,19 +20,10 @@ class District:
         for battery in self.batteries:
             self.costs_shared += 5000
 
+    def shuffle_houses(self):
 
-#Add cables function moved to cable.py
-    # def add_cable(self, x_coordinate, y_coordinate, house):
-    #     new_coordinates = (x_coordinate, y_coordinate)
-    #     print(new_coordinates)
-    #
-    #     for cable in self.cables_coordinates:
-    #         if new_coordinates == cable:
-    #             pass
-    #
-    #     self.cables_coordinates.append((x_coordinate, y_coordinate))
-    #     house.cables.append((x_coordinate, y_coordinate))
-    #     self.costs_shared += 9
+        random.shuffle(self.houses)
+
 
 
     def print_district(self):
@@ -52,6 +44,7 @@ class District:
 
     def dict_me(self):
         district_list = []
+
         dict_district = {'district': self.id, 'costs-shared': self.costs_shared}
         district_list.append(dict_district)
 
@@ -64,7 +57,9 @@ class District:
                 dict_house = {'location': str(house)}
                 dict_house['output'] = house.output
                 dict_battery['houses'].append(dict_house)
-
+                dict_house['cables'] = []
+                for cable in house.cables:
+                    dict_cable = {}
             district_list.append(dict_battery)
 
         with open('json.txt', 'w') as outfile:

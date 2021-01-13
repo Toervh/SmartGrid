@@ -33,11 +33,11 @@ class Battery:
         list_x = list(self.x_coordinate)
         return list_x
 
-    def __repr__(self):
-        return str(self.current_capacity)
+    # def __repr__(self):
+    #     return str(self.current_capacity)
 
-    def __str__(self):
-        return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)
+    # def __str__(self):
+    #     return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)
 
     def return_y(self):
         list_y = list(self.y_coordinate)

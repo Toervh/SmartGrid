@@ -17,6 +17,10 @@ def random_assignment(district):
                 list_available_batteries.append(battery)
 
         # print(f"available batteries: {list_available_batteries}")
+
+        # if len(list_available_batteries) = 0:
+
+
         random_battery = random.choice(list_available_batteries)
 
         house.add_connected_battery(random_battery.id)

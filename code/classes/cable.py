@@ -7,6 +7,7 @@ class Cable:
         self.start_x_coordinate = int(start_x_coordinate)
         self.start_y_coordinate = int(start_y_coordinate)
 
+        #  def plot cables:
         if self.start_x_coordinate > end_x_coordinate:
             for x in range(end_x_coordinate, self.start_x_coordinate):
                 self.x_coordinates.append(x)
@@ -29,17 +30,13 @@ class Cable:
         for i in range(len(self.x_coordinates) - 1):
             self.xy_coordinates.append((self.x_coordinates[i], self.y_coordinates[i]))
 
-
-    # def add_cables(self, house, district):
-
         for cable in self.xy_coordinates:
             if cable in battery.cables:
-                pass
-
-            house.cables.append((self.x_coordinates, self.y_coordinates))
-
-            district.cables_coordinates.append(self.xy_coordinates)
-            battery.cables.append(self.xy_coordinates)
+                self.xy_coordinates.remove(cable)
             district.costs_shared += 9
 
-        # print(f"house: {house.id}, cables: {self.xy_coordinates}")
+        for i in range(len(self.xy_coordinates)):
+
+            house.cables.append(self.xy_coordinates[i])
+            district.cables_coordinates.append(self.xy_coordinates[i])
+            battery.cables.append(self.xy_coordinates[i])

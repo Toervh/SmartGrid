@@ -5,3 +5,4 @@ TODO voor 13-01-2020:
 * Random houses en Kortste Route combineren. Deze vaker laten runnen en uitkomst opslaan
 * Swap code schrijven (om huizen en hun connectie met elkaar te vergelijken en te swappen als de andere combinatie goedkoper is)
 * Kortste Route en Swap combineren.
+* UML File maken? voor visualisatie

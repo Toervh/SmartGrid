@@ -1,9 +1,20 @@
 from code.classes.cable import Cable
+# from code.functions.lay_cables import create_cables
+# from code.functions.find_closest_node import find_closest_node
 
 def closest_assignment(district):
 
-
     for house in district.houses:
+
+        # closest_node = find_closest_node(district, house)
+        #
+        # closest_x = closest_node[0]
+        # closest_y = closest_node[1]
+        # selected_battery = closest_node[2]
+        #
+        # create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, district, house, closest_battery)
+
+
 
         current_x = house.x_coordinate
         current_y = house.y_coordinate
@@ -34,7 +45,7 @@ def closest_assignment(district):
         closest_battery.add_houses(house.id)
         closest_battery.add_houses_objects(house)
         closest_battery.update_capacity(house.output)
-        print(f"house: {house}, closest unfilled battery: {closest_battery}, distance: {closest_difference}")
+        # print(f"house {house.id}: {house}, closest unfilled battery {closest_battery.id}: {closest_battery}, distance: {closest_difference}")
 
         cable = Cable(house.x_coordinate, house.y_coordinate, closest_battery.x_coordinate, closest_battery.y_coordinate,
                   district, house, closest_battery)
