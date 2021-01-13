@@ -1,5 +1,7 @@
 TODO voor 13-01-2020:
 
 * Visualisatie van maximumcapciteit maken.
-* Kabels als object (denk ik) aanmaken en zorgen dat die "gelegd worden".
-* Functie schrijven die kosten berekent voor de kabels.
+
+* Random houses en Kortste Route combineren. Deze vaker laten runnen en uitkomst opslaan
+* Swap code schrijven (om huizen en hun connectie met elkaar te vergelijken en te swappen als de andere combinatie goedkoper is)
+* Kortste Route en Swap combineren.
