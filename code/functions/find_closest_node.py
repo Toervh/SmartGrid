@@ -41,9 +41,9 @@ def find_closest_node(district, house):
 
 
         if total_difference < closest_difference:
-                closest_difference = total_difference
-                selected_battery = battery
-                closest_node = Node(battery.x_coordinate, battery.y_coordinate, battery)
+            closest_difference = total_difference
+            selected_battery = battery
+            closest_node = Node(battery.x_coordinate, battery.y_coordinate, battery)
 
     house.add_connected_battery(selected_battery)
     selected_battery.add_houses(house.id)
