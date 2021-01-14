@@ -5,7 +5,6 @@ from code.classes.district import District
 from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import random_assignment
 from code.algorithms.closest import closest_assignment
-from code.algorithms.new_closest import new_closest_assignment
 from code.functions.lay_cables import create_cable
 from code.classes.cable import Cable
 from code.functions.visualise import visualise
@@ -22,16 +21,18 @@ if __name__ == '__main__':
     #Instantiating the object.
     d = District(id, list_house_objects, list_battery_objects)
 
+    # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
+    d.shuffle_houses()
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    closest_district = new_closest_assignment(d)
-    a = visualise(closest_district)
-    print(f"Cost shared: {closest_district.costs_shared}")
+    # closest_district = closest_assignment(d)
+    # a = visualise(closest_district)
+    # print(f"Cost shared: {closest_district.costs_shared}")
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
-    # randomized_district = random_assignment(d)
-    # a = visualise(randomized_district)
-    # print(f"Cost shared: {randomized_district.costs_shared}")
+    randomized_district = random_assignment(d)
+    a = visualise(randomized_district)
+    print(f"Cost shared: {randomized_district.costs_shared}")
 
     # ****------------------RUNS MULTIPLE RANDOM---------------------****
     # run_multiple_random(list_house_objects, list_battery_objects)

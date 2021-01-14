@@ -1,8 +1,4 @@
 import csv
-from code.classes.battery import Battery
-from code.classes.house import House
-from code.classes.district import District
-from code.classes.cable import Cable
 import matplotlib.pyplot as plt
 from bokeh.plotting import figure, output_file, show
 

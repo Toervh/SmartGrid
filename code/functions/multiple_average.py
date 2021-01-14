@@ -1,12 +1,4 @@
 import csv
-from code.classes.battery import Battery
-from code.classes.house import House
-from code.classes.district import District
-from code.functions.readfile import load_battery_file, load_house_file
-from code.algorithms.randomize import random_assignment
-from code.algorithms.closest import closest_assignment
-from code.classes.cable import Cable
-from code.functions.visualise import visualise
 from pprint import pprint
 import matplotlib.pyplot as plt
 

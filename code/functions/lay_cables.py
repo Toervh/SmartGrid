@@ -1,4 +1,4 @@
-from code.classes.newcable import Cable
+from code.classes.cable import Cable
 
 def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y_coordinate, district, house, battery):
 

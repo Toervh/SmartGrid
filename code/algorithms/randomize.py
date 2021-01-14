@@ -1,5 +1,6 @@
 import random
 from code.classes.cable import Cable
+from code.functions.lay_cables import create_cable
 import copy
 
 def random_assignment(district):
@@ -18,7 +19,6 @@ def random_assignment(district):
             if battery.check_capacity(house.output):
                 list_available_batteries.append(battery)
 
-        # print(f"available batteries: {list_available_batteries}")
 
         # Chooses a battery and connects it to the house currently on the loop
         random_battery = random.choice(list_available_batteries)
@@ -30,7 +30,7 @@ def random_assignment(district):
         random_battery.update_capacity(house.output)
 
         # Creates a cable to calculate the length.
-        cable = Cable(house.x_coordinate, house.y_coordinate, random_battery.x_coordinate, random_battery.y_coordinate, non_random_district, house, random_battery)
+        create_cable(house.x_coordinate, house.y_coordinate, random_battery.x_coordinate, random_battery.y_coordinate, non_random_district, house, random_battery)
 
     random_district = non_random_district
 
