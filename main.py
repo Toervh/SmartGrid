@@ -25,25 +25,43 @@ if __name__ == '__main__':
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
     d.shuffle_houses()
 
-    # print('Welcome to SmartGrid algorithms')
-    # print('==========')
-    # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
-    # print('==========')
-    # program = input('What program would you like to run?' )
+    print('Welcome to SmartGrid algorithms')
+    print('==========')
+    print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
+    print('==========')
+    program = input('What program would you like to run?' )
 
-    # prompting_dict = {
-    #     'Closest': closest_assignment(d),
-    #     'Multiple Random': run_multiple_random(list_house_objects, list_battery_objects),
-    #     'Multiple Randomized Closest': run_multiple_closest(d)
-    # }
+    prompting_dict = {
+        'Random': random_assignment(d),
+        'Closest': closest_assignment(d),
+        'Multiple Random': run_multiple_random(list_house_objects, list_battery_objects),
+        'Multiple Randomized Closest': run_multiple_closest(d)
+    }
 
-    # run = prompting_dict[program]
+    run = prompting_dict[program]
+
+
+    def can_cause_index_error(some_list):
+        other_list = []
+        for element in some_list:
+            if element not in taken_list:
+                other_list.append(element)
+
+        raise Exception("no options"):
+
+        return other_list
+    option = [1, 2, 3, 4]
+
+    while True:
+        options = can_cause_index_error(option)
+
+        taken_list.append
 
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    closest_district = closest_assignment(d)
-    a = visualise(closest_district)
-    print(f"Cost shared: {closest_district.costs_shared}")
+    # closest_district = closest_assignment(d)
+    # a = visualise(closest_district)
+    # print(f"Cost shared: {closest_district.costs_shared}")
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
     # randomized_district = random_assignment(d)
