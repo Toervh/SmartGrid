@@ -17,22 +17,38 @@ if __name__ == '__main__':
     list_battery_objects = load_battery_file('data/Huizen&Batterijen/district_1/district-1_batteries.csv')
     list_house_objects = load_house_file('data/Huizen&Batterijen/district_1/district-1_houses.csv')
 
-    id = 1
+    id = 1    
+
     #Instantiating the object.
     d = District(id, list_house_objects, list_battery_objects)
 
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
     d.shuffle_houses()
 
+    # print('Welcome to SmartGrid algorithms')
+    # print('==========')
+    # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
+    # print('==========')
+    # program = input('What program would you like to run?' )
+
+    # prompting_dict = {
+    #     'Closest': closest_assignment(d),
+    #     'Multiple Random': run_multiple_random(list_house_objects, list_battery_objects),
+    #     'Multiple Randomized Closest': run_multiple_closest(d)
+    # }
+
+    # run = prompting_dict[program]
+
+
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    # closest_district = closest_assignment(d)
-    # a = visualise(closest_district)
-    # print(f"Cost shared: {closest_district.costs_shared}")
+    closest_district = closest_assignment(d)
+    a = visualise(closest_district)
+    print(f"Cost shared: {closest_district.costs_shared}")
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
-    randomized_district = random_assignment(d)
-    a = visualise(randomized_district)
-    print(f"Cost shared: {randomized_district.costs_shared}")
+    # randomized_district = random_assignment(d)
+    # a = visualise(randomized_district)
+    # print(f"Cost shared: {randomized_district.costs_shared}")
 
     # ****------------------RUNS MULTIPLE RANDOM---------------------****
     # run_multiple_random(list_house_objects, list_battery_objects)
