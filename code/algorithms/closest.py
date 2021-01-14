@@ -7,9 +7,10 @@ def closest_assignment(district):
     between the current house and the batteries.
     Checks the capacity and calculates the distance.
     """
-
+    closest_district = None
+    i = 0
     for house in district.houses:
-
+        print(f"connecting house: {i}")
         # Call function to find the closest node to the house.
         closest_node = find_closest_node(district, house)
 
@@ -19,8 +20,10 @@ def closest_assignment(district):
 
         # create connection and all cables in between house and closest node.
         create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, district, house, house.connected_battery)
-
+        i += 1
     # Return the connected district.
     closest_district = district
+
+
 
     return closest_district

@@ -1,6 +1,6 @@
 from code.classes.node import Node
 
-def find_closest_cable(district, battery, house):
+def find_closest_cable(battery, house):
 
 
     current_x = house.x_coordinate
