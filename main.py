@@ -25,14 +25,14 @@ if __name__ == '__main__':
     d.shuffle_houses()
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    # closest_district = closest_assignment(d)
-    # a = visualise(closest_district)
-    # print(f"Cost shared: {closest_district.costs_shared}")
+    closest_district = closest_assignment(d)
+    a = visualise(closest_district)
+    print(f"Cost shared: {closest_district.costs_shared}")
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
-    randomized_district = random_assignment(d)
-    a = visualise(randomized_district)
-    print(f"Cost shared: {randomized_district.costs_shared}")
+    # randomized_district = random_assignment(d)
+    # a = visualise(randomized_district)
+    # print(f"Cost shared: {randomized_district.costs_shared}")
 
     # ****------------------RUNS MULTIPLE RANDOM---------------------****
     # run_multiple_random(list_house_objects, list_battery_objects)
