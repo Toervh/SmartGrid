@@ -1,7 +1,9 @@
 from code.classes.node import Node
 
 def find_closest_cable(battery, house):
-
+    """
+    This function is for when you know what battery the house should connect to.
+    """
 
     current_x = house.x_coordinate
     current_y = house.y_coordinate
@@ -11,6 +13,7 @@ def find_closest_cable(battery, house):
     closest_difference = max_difference
     closest_cable = None
 
+    # Loop over cables belonging to the battery to see which is closest.
     for cable in battery.cables:
         cable_x = cable.x_coordinate
         cable_y = cable.y_coordinate
@@ -24,7 +27,7 @@ def find_closest_cable(battery, house):
 
             closest_cable = Node(cable_x, cable_y, battery)
 
-
+    # Check battery coordinates to see if they are closer
     battery_x = battery.x_coordinate
     battery_y = battery.y_coordinate
 

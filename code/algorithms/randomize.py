@@ -2,6 +2,7 @@ import random
 from code.classes.cable import Cable
 from code.functions.lay_cables import create_cable
 from code.functions.find_closest_cable import find_closest_cable
+from code.classes.exceptions import NoBatteryError
 import copy
 
 def random_assignment(district):
@@ -9,21 +10,20 @@ def random_assignment(district):
     Randomly assign each node with one of the possibilities.
     """
 
-    random_district = None
-
     # Loops through all the houses
     for house in district.houses:
 
         list_available_batteries = []
-
         # Checks if the battery can handle the house output
         for battery in district.batteries:
 
             if battery.check_capacity(house.output):
                 list_available_batteries.append(battery)
-                # print(f"battery: {battery.id} is at: {battery.current_capacity}")
-            # else:
-            #     print(f"battery: {battery.id} is at maximum capacity")
+
+
+        # If list available batteries is empty: Return False so program can end
+        if list_available_batteries == []:
+            raise NoBatteryError
 
         # Chooses a battery and connects it to the house currently on the loop
         random_battery = random.choice(list_available_batteries)
@@ -41,12 +41,13 @@ def random_assignment(district):
         random_battery.add_houses_objects(house)
         random_battery.update_capacity(house.output)
 
-    # Creates a cable to calculate the length.
-    create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, non_random_district, house,
-                 random_battery)
-
-    random_district = non_random_district
 
 
+        # Creates a cable to calculate the length.
+        create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, district, house,
+                     random_battery)
+
+    # The new district is now randomized and should be named as such.
+    random_district = district
 
     return random_district

@@ -25,7 +25,6 @@ class District:
         random.shuffle(self.houses)
 
 
-
     def print_district(self):
         for battery in self.batteries:
             print(f"battery ID: {battery.id}")
@@ -56,10 +55,11 @@ class District:
             for house in battery.houses_objects:
                 dict_house = {'location': str(house)}
                 dict_house['output'] = house.output
-                dict_battery['houses'].append(dict_house)
+
                 dict_house['cables'] = []
                 for cable in house.cables:
-                    dict_cable = {}
+                    dict_house['cables'].append(str(cable.xy_coordinate))
+                dict_battery['houses'].append(dict_house)
             district_list.append(dict_battery)
 
         with open('json.txt', 'w') as outfile:

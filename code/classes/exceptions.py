@@ -1,0 +1,2 @@
+class NoBatteryError(Exception):
+    pass
