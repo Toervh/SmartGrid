@@ -11,66 +11,13 @@ from code.functions.visualise import visualise
 from pprint import pprint
 import matplotlib.pyplot as plot
 from code.functions.multiple_average import run_multiple_random, run_multiple_closest
+from code.functions.prompts import choose_algorithm, choose_district
 
 if __name__ == '__main__':
-    #Hardcoded only district 1, can change it by changing the files
-    list_battery_objects = load_battery_file('data/Huizen&Batterijen/district_1/district-1_batteries.csv')
-    list_house_objects = load_house_file('data/Huizen&Batterijen/district_1/district-1_houses.csv')
+    district_chosen = choose_district()
+    instance = choose_algorithm(district_chosen[1], district_chosen[0])
+    visualise(instance)
 
-    id = 1    
-
-    #Instantiating the object.
-    d = District(id, list_house_objects, list_battery_objects)
-
-    # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
-    d.shuffle_houses()
-
-    print('Welcome to SmartGrid algorithms')
-    print('==========')
-    print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
-    print('==========')
-    program = input('What program would you like to run?' )
-
-    prompting_dict = {
-        'Random': random_assignment(d),
-        'Closest': closest_assignment(d),
-        'Multiple Random': run_multiple_random(list_house_objects, list_battery_objects),
-        'Multiple Randomized Closest': run_multiple_closest(d)
-    }
-
-    run = prompting_dict[program]
-
-
-    def can_cause_index_error(some_list):
-        other_list = []
-        for element in some_list:
-            if element not in taken_list:
-                other_list.append(element)
-
-        raise Exception("no options"):
-
-        return other_list
-    option = [1, 2, 3, 4]
-
-    while True:
-        options = can_cause_index_error(option)
-
-        taken_list.append
-
-
-    # ****------------------RUNS CLOSEST DISTRICT--------------------****
-    # closest_district = closest_assignment(d)
-    # a = visualise(closest_district)
-    # print(f"Cost shared: {closest_district.costs_shared}")
-
-    # ****------------------RUNS RANDOM DISTRICT---------------------****
-    # randomized_district = random_assignment(d)
-    # a = visualise(randomized_district)
-    # print(f"Cost shared: {randomized_district.costs_shared}")
-
-    # ****------------------RUNS MULTIPLE RANDOM---------------------****
-    # run_multiple_random(list_house_objects, list_battery_objects)
-    # run_multiple_random(list_house_objects, list_battery_objects)
-
-    # ****------------------RUNS MULTIPLE RANDOMIZED CLOSEST---------****
-    # multiple_closest = run_multiple_closest(d)
+    # caymins clustering
+    # a* op batterij
+    #
