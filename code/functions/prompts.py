@@ -14,11 +14,11 @@ def choose_algorithm(list_house_objects, list_battery_objects):
     d = District(id, list_house_objects, list_battery_objects)
     d.shuffle_houses()
 
-    keynames = ["random", "closest", "multiple_random", "multiple_random_closest"]
+    keynames = ["random", "closest", "multiple random", "multiple closest"]
 
     print('What algorithm do you want to run?')
     print('==========')
-    print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
+    print(' Random\n Closest\n Multiple Random\n Multiple Closest')
     print('==========')
 
     while True:
@@ -28,8 +28,18 @@ def choose_algorithm(list_house_objects, list_battery_objects):
             break
         print('Algorithm not found, try again.')
 
-    if program == 'multiple_random':
-        return run_multiple_random(list_house_objects, list_battery_objects)
+    if program == 'multiple random':
+        with open("results_random.txt", "a") as file_results:
+            for num in range(100):
+                try:
+                    original_district = copy.deepcopy(d)
+                    random_district = random_assignment(original_district)
+                    file_results.write(f"try: {num}. Result:" )
+                    file_results.write(str(random_district.costs_shared) + '\n')
+
+                except NoBatteryError:
+                    pass
+
     elif program == 'closest':
         while True:
             try:
@@ -41,13 +51,36 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                 pass
 
         a = visualise(closest_district)
-        # closest_district.dict_me()
+        closest_district.dict_me()
         print(f"Cost shared: {closest_district.costs_shared}")
         return closest_district
-    elif program == 'multiple_random_closest':
-        return run_multiple_closest
+    elif program == 'multiple closest':
+        print("You selected multiple closest.")        
+        with open("results.txt", "a") as file_results:
+        
+            for num in range(100):
+        
+                try:
+                    original_district = copy.deepcopy(d)
+                    closest_district = closest_assignment(original_district)
+                    file_results.write(f"try: {num}. Result:" )
+                    file_results.write(str(closest_district.costs_shared) + '\n')
+        
+        
+                except NoBatteryError:
+                    pass
     elif program == 'random':
-        return random_assignment(d)
+        print("You selected random.")
+        while True:
+            try:
+                original_district = copy.deepcopy(d)
+                randomized_district = random_assignment(original_district)
+                break
+            except NoBatteryError:
+                pass
+        randomized_district.dict_me()
+        a = visualise(randomized_district)
+        print(f"Cost shared: {randomized_district.costs_shared}")
 
 def choose_district():
     district_dict = {

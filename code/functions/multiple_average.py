@@ -1,6 +1,8 @@
 import csv
 from pprint import pprint
-import matplotlib.pyplot as plt
+from code.classes.district import District
+from code.algorithms.closest import closest_assignment
+from code.algorithms.randomize import random_assignment
 
 
 def run_multiple_random(list_house_objects, list_battery_objects):
@@ -37,8 +39,8 @@ def run_multiple_closest(district):
     while i < 100:
         closest_district = closest_assignment(district)
         cost_sum+=closest_district.costs_shared
-        list_cost.append(randomized_district.costs_shared)
+        list_cost.append(closest_district.costs_shared)
         i+=1
-        print(f"Cost shared: {randomized_district.costs_shared}")
+        print(f"Cost shared: {closest_district.costs_shared}")
     cost_average = cost_sum/100
     return print(cost_average)
