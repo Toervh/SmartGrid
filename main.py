@@ -18,10 +18,10 @@ from code.functions.prompts import choose_algorithm, choose_district
 if __name__ == '__main__':
     district_chosen = choose_district()
     instance = choose_algorithm(district_chosen[1], district_chosen[0])
-    visualise(instance)
+
 
     #Instantiating the object.
-    d = District(id, list_house_objects, list_battery_objects)
+    # d = District(id, list_house_objects, list_battery_objects)
 
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
     # d.shuffle_houses()
@@ -75,18 +75,18 @@ if __name__ == '__main__':
 
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
-    while True:
-        try:
-            original_district = copy.deepcopy(d)
-            randomized_district = random_assignment(original_district)
-
-            break
-
-        except NoBatteryError:
-            pass
-    randomized_district.dict_me()
-    a = visualise(randomized_district)
-    print(f"Cost shared: {randomized_district.costs_shared}")
+    # while True:
+    #     try:
+    #         original_district = copy.deepcopy(d)
+    #         randomized_district = random_assignment(original_district)
+    #
+    #         break
+    #
+    #     except NoBatteryError:
+    #         pass
+    # randomized_district.dict_me()
+    # a = visualise(randomized_district)
+    # print(f"Cost shared: {randomized_district.costs_shared}")
 
     # ****------------------RUNS MULTIPLE RANDOM---------------------****
     # run_multiple_random(list_house_objects, list_battery_objects)
