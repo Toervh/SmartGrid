@@ -13,13 +13,12 @@ from code.classes.exceptions import NoBatteryError
 from pprint import pprint
 import matplotlib.pyplot as plot
 from code.functions.multiple_average import run_multiple_random, run_multiple_closest
+from code.functions.prompts import choose_algorithm, choose_district
 
 if __name__ == '__main__':
-    #Hardcoded only district 1, can change it by changing the files
-    list_battery_objects = load_battery_file('data/Huizen&Batterijen/district_1/district-1_batteries.csv')
-    list_house_objects = load_house_file('data/Huizen&Batterijen/district_1/district-1_houses.csv')
-
-    id = 1    
+    district_chosen = choose_district()
+    instance = choose_algorithm(district_chosen[1], district_chosen[0])
+    visualise(instance)
 
     #Instantiating the object.
     d = District(id, list_house_objects, list_battery_objects)
