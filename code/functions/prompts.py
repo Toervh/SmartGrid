@@ -31,7 +31,6 @@ def choose_algorithm(list_house_objects, list_battery_objects):
     if program == 'multiple_random':
         return run_multiple_random(list_house_objects, list_battery_objects)
     elif program == 'closest':
-        print("you selected closest")
         while True:
             try:
                 original_district = copy.deepcopy(d)

@@ -31,7 +31,7 @@ class District:
             print(f"battery x coordinate: {battery.x_coordinate}")
             print(f"battery y coordinate: {battery.y_coordinate}")
             print(f"battery capacity: {battery.capacity}")
-            print(f"list of conncted houses: {battery.houses}")
+            print(f"list of connected houses: {battery.houses}")
 
         for house in self.houses:
             print(f"house id: {house.id}")
