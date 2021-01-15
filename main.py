@@ -10,14 +10,21 @@ from code.functions.lay_cables import create_cable
 from code.classes.cable import Cable
 from code.functions.visualise import visualise
 from code.classes.exceptions import NoBatteryError
+from code.algorithms.kmeans import k_means
 from pprint import pprint
 import matplotlib.pyplot as plot
 from code.functions.multiple_average import run_multiple_random, run_multiple_closest
 from code.functions.prompts import choose_algorithm, choose_district
 
+
 if __name__ == '__main__':
     district_chosen = choose_district()
-    instance = choose_algorithm(district_chosen[1], district_chosen[0])
+    d = District(id, district_chosen[1], district_chosen[0])
+    d.shuffle_houses()
+    v = k_means(d)
+    visualise(v)
+    # district_chosen = choose_district()
+    # instance = choose_algorithm(district_chosen[1], district_chosen[0])
 
 
     #Instantiating the object.
