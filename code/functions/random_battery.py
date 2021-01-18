@@ -28,5 +28,3 @@ def random_battery():
     
     return random_coordinates
 
-random_battery()
-
