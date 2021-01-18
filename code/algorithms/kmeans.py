@@ -17,25 +17,28 @@ def k_means(district):
         new_list.append(battery)
 
 
-    print(f"starting coordinates: {random_coordinates}")
-
     i = 0
-    for i in range(4):
+    for i in range(5):
         new_list[i].x_coordinate = random_coordinates[i][0]
         new_list[i].y_coordinate = random_coordinates[i][1]
         i+=1
 
+
     # Setting max parameters for start loop which searches for closest battery.
     grid = 50*50
-    closest_difference = grid
 
 
     previous_list = []
+    a = visualise(new_district)
 
     while True:
         current_list = []
         current_battery = None
-        a = visualise(new_district)
+
+        # Reset the lists of attached houses for every battery.
+        for battery in new_district.batteries:
+            battery.houses_objects = []
+            battery.houses = []
 
         for house in new_district.houses:
             selected_battery = None
@@ -59,10 +62,11 @@ def k_means(district):
             selected_battery.add_houses_objects(house) 
 
 
-        x_list = []
-        y_list = []
+
 
         for battery in new_district.batteries:
+            x_list = []
+            y_list = []
             for house in battery.houses_objects:
                 x_list.append(house.x_coordinate)
                 y_list.append(house.y_coordinate)
@@ -88,8 +92,19 @@ def k_means(district):
 
 
         print("One iteration finished.")
-        time.sleep(20)
+        print(f"costs shared: {new_district.costs_shared}")
+        time.sleep(5)
 
     for battery in new_district.batteries:
         for house in battery.houses_objects:
-            create_cable(battery.x_coordinate, battery.y_coordinate, house.x_coordinate, house.y_coordinate, new_district, house, battery)
+
+            closest_cable = find_closest_cable(battery, house)
+            create_cable(house.x_coordinate, house.y_coordinate, closest_cable.x_coordinate, closest_cable.y_coordinate, new_district, house, battery)
+            print(f"house ID: {house.id}. cables: ")
+            for cable in house.cables:
+                print(cable.xy_coordinate)
+
+
+    print(f"costs shared: {new_district.costs_shared}")
+
+    return new_district
