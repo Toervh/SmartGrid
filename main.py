@@ -60,31 +60,43 @@ if __name__ == '__main__':
     #     taken_list.append
 
     # ****------------------RUNS K-MEANS ClUSTERING DISTRICT--------------------****
-    # list_results = []
-    # while len(list_results) < 100:
-    #     v = k_means(d)
-    #     list_results.append(v.costs_shared)
-    #     # visualise(v)
-    # plot_results(list_results)
-
-    # ****------------------RUNS CLOSEST DISTRICT--------------------****
     list_results = []
-    while len(list_results) < 100:
+    i = 0
+    while len(list_results) < 1000:
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                closest_district = closest_assignment(original_district)
-                list_results.append(closest_district.costs_shared)
-                print("One iteration done")
+                k_means_district = k_means(original_district)
+                list_results.append(k_means_district.costs_shared)
+                # visualise(v)
                 break
 
             except NoBatteryError:
                 pass
+        i += 1
+        print(i)
+    plot_results(list_results)
+
+    # ****------------------RUNS CLOSEST DISTRICT--------------------****
+    # list_results = []
+    # list_districts = []
+    # while len(list_results) < 100:
+    #     while True:
+    #         try:
+    #             original_district = copy.deepcopy(d)
+    #             closest_district = closest_assignment(original_district)
+    #             list_results.append(closest_district.costs_shared)
+    #             print("One iteration done")
+    #             break
+    #
+    #         except NoBatteryError:
+    #             pass
 
     # a = visualise(closest_district)
     # closest_district.dict_me()
     # print(f"Cost shared: {closest_district.costs_shared}")
-    plot_results(list_results)
+
+    # plot_results(list_results)
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
     # while True:

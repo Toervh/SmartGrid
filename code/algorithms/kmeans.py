@@ -8,11 +8,12 @@ import time
 import copy
 
 def k_means(district):
-    # while True:
-    #     try:
-    random_coordinates = random_battery()
-    new_district = copy.deepcopy(district)
 
+    random_coordinates = random_battery()
+    new_district = district
+
+    # print("starting new")
+    # time.sleep(4)
     # making list for batteries. Important when implementing constraints.
     new_list = []
     for battery in new_district.batteries:
@@ -64,16 +65,19 @@ def k_means(district):
             selected_battery.add_houses(house.id)
             selected_battery.add_houses_objects(house)
 
-            # This piece of code checks if the battery has capacity to connect the house.
+            # This piece of code checks if the battery has capacity to connect the house. leads to 0 results.
+
             # battery_check = selected_battery.check_capacity(house.output)
+            # print(selected_battery.current_capacity)
+            #
             # if battery_check is False:
-            #     print("NoBatteryError occurred.")
             #     raise NoBatteryError
             # else:
             #     selected_battery.update_capacity(house.output)
-            #     print(f"Updated battery capacity to {selected_battery.current_capacity}")
 
-        print("Connected once")
+        # let user know a succesfull grouping was made
+        # print("Connected once")
+
         for battery in new_district.batteries:
             x_list = []
             y_list = []
@@ -81,9 +85,14 @@ def k_means(district):
                 x_list.append(house.x_coordinate)
                 y_list.append(house.y_coordinate)
 
-
-            x_average = int(sum(x_list)/len(x_list))
-            y_average = int(sum(y_list)/len(y_list))
+            try:
+                x_average = int(sum(x_list)/len(x_list))
+            except ZeroDivisionError:
+                    x_average = 0
+            try:
+                y_average = int(sum(y_list)/len(y_list))
+            except ZeroDivisionError:
+                y_average = 0
             battery.x_coordinate = x_average
             battery.y_coordinate = y_average
             current_list.append((x_average, y_average))
@@ -101,7 +110,7 @@ def k_means(district):
                 previous_list = current_list
 
 
-        # print("One iteration finished.")
+        print("One iteration finished.")
         # time.sleep(5)
 
 

@@ -5,7 +5,7 @@ def plot_results(results):
 
 
     # line 1 points
-    x = list(range(100))
+    x = list(range(len(results)))
     y = results
 
     # plotting the line 1 points
