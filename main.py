@@ -11,6 +11,7 @@ from code.classes.cable import Cable
 from code.functions.visualise import visualise
 from code.classes.exceptions import NoBatteryError
 from code.algorithms.kmeans import k_means
+from code.functions.results_graph import plot_results
 from pprint import pprint
 import matplotlib.pyplot as plot
 from code.functions.multiple_average import run_multiple_random, run_multiple_closest
@@ -18,20 +19,13 @@ from code.functions.prompts import choose_algorithm, choose_district
 
 
 if __name__ == '__main__':
+
+    # ****-------------Instantiating the object-------------****
     district_chosen = choose_district()
     d = District(id, district_chosen[1], district_chosen[0])
-    d.shuffle_houses()
-    v = k_means(d)
-    visualise(v)
-    # district_chosen = choose_district()
-    # instance = choose_algorithm(district_chosen[1], district_chosen[0])
-
-
-    #Instantiating the object.
-    # d = District(id, list_house_objects, list_battery_objects)
 
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
-    # d.shuffle_houses()
+    d.shuffle_houses()
 
     # print('Welcome to SmartGrid algorithms')
     # print('==========')
@@ -65,6 +59,13 @@ if __name__ == '__main__':
     #
     #     taken_list.append
 
+    # ****------------------RUNS K-MEANS ClUSTERING DISTRICT--------------------****
+    list_results = []
+    while len(list_results) < 100:
+        v = k_means(d)
+        list_results.append(v.costs_shared)
+        # visualise(v)
+    plot_results(list_results)
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
     # while True:

@@ -8,6 +8,8 @@ import time
 import copy
 
 def k_means(district):
+    # while True:
+    #     try:
     random_coordinates = random_battery()
     new_district = copy.deepcopy(district)
 
@@ -29,9 +31,10 @@ def k_means(district):
 
 
     previous_list = []
-    a = visualise(new_district)
+    # a = visualise(new_district)
 
     while True:
+
         current_list = []
         current_battery = None
 
@@ -47,7 +50,7 @@ def k_means(district):
             current_x = house.x_coordinate
             current_y = house.y_coordinate
             for battery in new_district.batteries:
-                
+
                 battery_x = battery.x_coordinate
                 battery_y = battery.y_coordinate
 
@@ -59,11 +62,18 @@ def k_means(district):
                     closest_difference = total_difference
                     selected_battery = battery
             selected_battery.add_houses(house.id)
-            selected_battery.add_houses_objects(house) 
+            selected_battery.add_houses_objects(house)
 
+            # This piece of code checks if the battery has capacity to connect the house.
+            # battery_check = selected_battery.check_capacity(house.output)
+            # if battery_check is False:
+            #     print("NoBatteryError occurred.")
+            #     raise NoBatteryError
+            # else:
+            #     selected_battery.update_capacity(house.output)
+            #     print(f"Updated battery capacity to {selected_battery.current_capacity}")
 
-
-
+        print("Connected once")
         for battery in new_district.batteries:
             x_list = []
             y_list = []
@@ -78,9 +88,9 @@ def k_means(district):
             battery.y_coordinate = y_average
             current_list.append((x_average, y_average))
 
-        print(f"previous list: {previous_list}")
-        print(f"corrected list: {current_list}")
-        a = visualise(new_district)
+        # print(f"previous list: {previous_list}")
+        # print(f"corrected list: {current_list}")
+        # a = visualise(new_district)
 
         if not previous_list:
             previous_list = current_list
@@ -91,20 +101,21 @@ def k_means(district):
                 previous_list = current_list
 
 
-        print("One iteration finished.")
-        print(f"costs shared: {new_district.costs_shared}")
-        time.sleep(5)
+        # print("One iteration finished.")
+        # time.sleep(5)
+
 
     for battery in new_district.batteries:
+        # print(battery.current_capacity)
         for house in battery.houses_objects:
 
             closest_cable = find_closest_cable(battery, house)
             create_cable(house.x_coordinate, house.y_coordinate, closest_cable.x_coordinate, closest_cable.y_coordinate, new_district, house, battery)
-            print(f"house ID: {house.id}. cables: ")
-            for cable in house.cables:
-                print(cable.xy_coordinate)
 
 
-    print(f"costs shared: {new_district.costs_shared}")
+    # print(f"costs shared: {new_district.costs_shared}")
 
+        # except NoBatteryError:
+        #     pass
+    print("Finished plotting.")
     return new_district

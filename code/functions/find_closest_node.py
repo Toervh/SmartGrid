@@ -65,8 +65,6 @@ def find_closest_node(district, house):
 
     # Add the connection to all Classes.
     # TODO Optimize this.
-    # if selected_battery is None:
-    #     return
     house.add_connected_battery(selected_battery)
     selected_battery.add_houses(house.id)
     selected_battery.add_houses_objects(house)
