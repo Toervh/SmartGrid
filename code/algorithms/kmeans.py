@@ -4,6 +4,7 @@ from code.functions.find_closest_cable import find_closest_cable
 from code.functions.random_battery import random_battery
 from code.classes.exceptions import NoBatteryError
 from code.functions.visualise import visualise
+from code.functions.check_grid import check_grid
 import time
 import copy
 
@@ -96,6 +97,7 @@ def k_means(district):
             previous_list = current_list
         elif previous_list:
             if previous_list == current_list:
+                check_grid(current_list, new_district)
                 break
             else:
                 previous_list = current_list
