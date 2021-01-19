@@ -1,11 +1,13 @@
 from code.functions.find_closest_node import find_closest_node
 from code.functions.lay_cables import create_cable
+from code.functions.swap import swap
 
 def closest_assignment(district):
     """
     closest chooses the shortest distance
     between the current house and the batteries.
     Checks the capacity and calculates the distance.
+    MAY CAUSE ENDLESS LOOP
     """
     closest_district = None
     district.shuffle_houses()
@@ -28,5 +30,15 @@ def closest_assignment(district):
     closest_district = district
 
 
+    closest_district.shuffle_houses()
+    for house in closest_district.houses:
+        print(f"old battery = {house.connected_battery.id}")
+        house_swap = swap(house, closest_district)
+        if house_swap:
 
+            print(f"house: {house.id} swapped. new battery: {house.connected_battery.id}")
+        # if house_swap:
+        #     closest_assignment(closest_district)
+    for battery in closest_district.batteries:
+        print(f"battery {battery.id}. capacity: {battery.current_capacity}")
     return closest_district

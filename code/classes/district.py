@@ -48,12 +48,12 @@ class District:
         district_list.append(dict_district)
 
         for battery in self.batteries:
-            dict_battery = {'location': str(battery)}
+            dict_battery = {'location': (battery.x_coordinate, battery.y_coordinate)}
             dict_battery['capacity'] = battery.capacity
 
             dict_battery['houses'] = []
             for house in battery.houses_objects:
-                dict_house = {'location': str(house)}
+                dict_house = {'location': (house.x_coordinate, house.y_coordinate)}
                 dict_house['output'] = house.output
 
                 dict_house['cables'] = []

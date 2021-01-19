@@ -5,6 +5,7 @@ class Battery:
         create a Battery object within the District superclass.
         """
         self.id = id
+        self.type = None
         self.x_coordinate = x_coordinate
         self.y_coordinate = y_coordinate
         self.capacity = float(capacity)
@@ -12,6 +13,28 @@ class Battery:
         self.houses = []
         self.houses_objects = []
         self.cables = []
+        self.price = 1800
+
+    def set_powerstar(self):
+        self.type = "PowerStar"
+        self.price = 900
+        self.capacity = float(450)
+
+    def set_imerseII(self):
+        self.type = "Imerse-II"
+        self.capacity = float(900)
+        self.price = 1350
+
+    def upgrade(self):
+        if self.type == "PowerStar":
+            self.type = "Imerse-II"
+            self.capacity = float(900)
+            self.price = 1350
+        elif self.type == "Imerse-II":
+            self.type = "Imerse-III"
+            self.capacity = float(1800)
+            self.price = 1800
+
 
     def add_houses(self, house_id):
         """Connects houses by ID"""

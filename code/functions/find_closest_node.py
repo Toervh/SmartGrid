@@ -28,6 +28,7 @@ def find_closest_node(district, house):
         raise NoBatteryError
 
     # For every available battery: Check if for the closest cable to the houses coordinates.
+    previous_battery = None
     for battery in available_batteries:
         for cable in battery.cables:
             cable_x = cable.x_coordinate
@@ -44,7 +45,15 @@ def find_closest_node(district, house):
                 closest_difference = total_difference
                 selected_battery = battery
                 closest_node = Node(cable_x, cable_y, battery)
+            # elif total_difference == closest_difference:
+            #     emptiest_battery = None
+            #     closest_difference = total_difference
+            #     if battery.current_capacity > previous_battery.current_capacity:
+            #         selected_battery = previous_battery
+            #         closest_node = Node()
 
+
+        previous_battery = battery
         # Do the same as above but for the coordinates of every battery instead of the cables.
         # This is especially important when there are few cables of the grid.
         battery_x = battery.x_coordinate
