@@ -34,3 +34,4 @@ def HillClimber(list_house_objects, list_battery_objects):
                 N+=1
             elif copied_district.costs_shared > climbing_copy.costs_shared and N > 10:
                 break
+    return climbing_copy
