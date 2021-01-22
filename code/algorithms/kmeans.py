@@ -106,7 +106,7 @@ def k_means(district):
             previous_list = current_list
         elif previous_list:
             if previous_list == current_list:
-                check_grid(current_list, new_district)
+                check_grid(current_list, battery.houses_objects)
                 break
             else:
                 previous_list = current_list

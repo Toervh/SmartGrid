@@ -13,3 +13,9 @@ class House:
 
     def __str__(self):
         return '{x_coordinate},{y_coordinate}'.format(**self.__dict__)
+
+    def remove_connected_battery(self):
+        self.connected_battery = None
+
+    def remove_cables(self):
+        self.cables = []

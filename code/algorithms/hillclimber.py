@@ -7,9 +7,10 @@ import random
 
 
 def find_random_cable(available_batteries):
-    random_cable_list = []
-    random_cable_list.append(())
-    random_point = random.choice(available_batteries)
+    random_battery = random.choice(available_batteries)
+    x_coordinate = random_battery.x_coordinate
+    y_coordinate = random_battery.y_coordinate
+    random_point = (x_coordinate, y_coordinate)
     return random_point
 
 def HillClimber(list_house_objects, list_battery_objects):
@@ -27,15 +28,33 @@ def HillClimber(list_house_objects, list_battery_objects):
     for house in copied_district.houses:
         N = 0
         while True:
-            climbing_copy = copy.deepcopy(copied_district)
-            new_random_cable = find_random_cable(list_batteries_copy)
+            # haal dit huis uit zn batterij etc'
+            house.remove_connected_battery()
+            house.remove_cables()
+            for battery in list_batteries_copy:
+                try:
+                    battery.houses.remove(house.id)
+                    battery.houses_objects.remove(house)
+                except ValueError:
+                    continue
             
-            if copied_district.costs_shared < climbing_copy.costs_shared:   #of kabelkost?
-                copied_district = climbing_copy
-                create_cable(house.x_coordinate, house.y_coordinate, district, house)
-            elif copied_district.costs_shared > climbing_copy.costs_shared:
+
+            # kies uit alle mogelijk aansluitpunten (gepruned op dichtsbijzijnd?) een aansluitpunt
+            # sluit deze optie weer aan
+            
+            
+            # check of de kosten hoger zijn gewordenvvv
+
+            if randomized_district.costs_shared < copied_district.costs_shared:   #of kabelkost?
+                current_district_iteration = copy.deepcopy(copied_district)
+                randomized_district = current_district_iteration
+            
+            elif randomized_district.costs_shared > copied_district.costs_shared:
+                # maak ongedaan
                 N+=1
-            elif copied_district.costs_shared > climbing_copy.costs_shared and N > 10:
+            
+            elif randomized_district.costs_shared > copied_district.costs_shared and N > 10:
+                # maak ongedaan
                 break
 
-    return climbing_copy
+    return randomized_district
