@@ -1,14 +1,14 @@
 from code.algorithms.randomize import random_assignment
 from code.classes.district import District
 import copy
+import random
 
 
-def find_random_cable(house, available_batteries):
+def find_random_cable(available_batteries):
     random_cable_list = []
-    start_x = house.x_coordinates
-    start_y = house.y_coordinates
-    random_cable_list.append((start_x, start_y))
-    return random_cable_list
+    random_cable_list.append(())
+    random_point = random.choice(available_batteries)
+    return random_point
 
 def HillClimber(list_house_objects, list_battery_objects):
     id = 1
@@ -25,7 +25,7 @@ def HillClimber(list_house_objects, list_battery_objects):
     for house in copied_district.houses:
         N = 0
         while True:
-            
+
             new_random_cable = find_random_cable(house, available_batteries)
             
             if copied_district.costs_shared < climbing_copy.costs_shared:   #of kabelkost?
