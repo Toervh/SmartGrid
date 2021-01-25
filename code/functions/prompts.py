@@ -30,16 +30,16 @@ def choose_algorithm(list_house_objects, list_battery_objects):
 
     if program == 'multiple random':
         with open("results_random.txt", "a") as file_results:
-            for num in range(100):
+            for num in range(1000):
                 try:
                     original_district = copy.deepcopy(d)
                     random_district = random_assignment(original_district)
                     file_results.write(f"try: {num}. Result:" )
                     file_results.write(str(random_district.costs_shared) + '\n')
-
                 except NoBatteryError:
                     pass
-
+            print(results_list)
+            print(sorted(results_list))
     elif program == 'closest':
         while True:
             try:
@@ -57,18 +57,29 @@ def choose_algorithm(list_house_objects, list_battery_objects):
     elif program == 'multiple closest':
         print("You selected multiple closest.")        
         with open("results.txt", "a") as file_results:
-        
-            for num in range(100):
+            results_list = []
+            for num in range(10000):
         
                 try:
                     original_district = copy.deepcopy(d)
                     closest_district = closest_assignment(original_district)
                     file_results.write(f"try: {num}. Result:" )
                     file_results.write(str(closest_district.costs_shared) + '\n')
-        
-        
+                    results_list.append(closest_district.costs_shared)
+
                 except NoBatteryError:
                     pass
+            print(results_list)
+
+            sum_list = sum(results_list)
+            average = sum_list/len(results_list)
+
+            file_results.write("Average: ")
+            file_results.write(str(average) + '\n')
+            sort_list = sorted(results_list)
+            lowest = sort_list[0]
+            print(lowest)
+
     elif program == 'random':
         print("You selected random.")
         while True:

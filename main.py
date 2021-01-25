@@ -1,5 +1,7 @@
 import csv
 import copy
+import time
+from datetime import timedelta
 from code.classes.battery import Battery
 from code.classes.house import House
 from code.classes.district import District
@@ -24,10 +26,12 @@ if __name__ == '__main__':
     # ****-------------Instantiating the object-------------****
     district_chosen = choose_district()
     d = District(id, district_chosen[1], district_chosen[0])
-
+    choose_algorithm(district_chosen[1], district_chosen[0])
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
     d.shuffle_houses()
-
+    start_time = time.monotonic()
+    end_time = time.monotonic()
+    print(timedelta(seconds=end_time - start_time))
     # print('Welcome to SmartGrid algorithms')
     # print('==========')
     # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')

@@ -43,4 +43,5 @@ def run_multiple_closest(district):
         i+=1
         print(f"Cost shared: {closest_district.costs_shared}")
     cost_average = cost_sum/100
+    print(cost_average)
     return print(cost_average)
