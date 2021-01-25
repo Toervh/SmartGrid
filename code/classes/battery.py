@@ -25,6 +25,11 @@ class Battery:
         self.capacity = float(900)
         self.price = 1350
 
+    def set_imerseIII(self):
+        self.type = "Imerse-III"
+        self.capacity = float(1800)
+        self.price = 1800
+
     def upgrade(self):
         if self.type == "PowerStar":
             self.type = "Imerse-II"
@@ -35,6 +40,15 @@ class Battery:
             self.capacity = float(1800)
             self.price = 1800
 
+    def downgrade(self):
+        if self.type == "Imerse-III":
+            self.type = "Imerse-II"
+            self.capacity = float(900)
+            self.price = 1350
+        elif self.type == "Imerse-II":
+            self.type = "PowerStar"
+            self.capacity = float(450)
+            self.price = (900)
 
     def add_houses(self, house_id):
         """Connects houses by ID"""

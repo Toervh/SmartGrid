@@ -68,14 +68,14 @@ if __name__ == '__main__':
     list_results = []
     list_districts = []
     i = 0
-    while len(list_results) < 100:
+    while len(list_results) < 10:
         while True:
             try:
                 original_district = copy.deepcopy(d)
                 k_means_district = k_means(original_district)
                 list_results.append(k_means_district.costs_shared)
                 list_districts.append(k_means_district)
-                # visualise(v)
+                visualise(k_means_district)
                 break
 
             except NoBatteryError:
