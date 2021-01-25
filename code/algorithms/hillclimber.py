@@ -37,9 +37,6 @@ def HillClimber(list_house_objects, list_battery_objects):
         N = 0
         while True:
             # haal dit huis uit zn batterij etc
-            old_battery = house.connected_battery
-            old_cables = copy.deepcopy(house.cables)
-
             house.remove_connected_battery()
             house.remove_cables()
             for battery in list_batteries_copy:
@@ -62,12 +59,11 @@ def HillClimber(list_house_objects, list_battery_objects):
                 climber_district = current_district_iteration
             
             elif climber_district.costs_shared > copied_district.costs_shared:
-                battery.houses.remove(house.id)
-                battery.houses_objects.remove(house)
+                copied_district = climber_district
                 N+=1
             
             elif climber_district.costs_shared > copied_district.costs_shared and N > 10:
-                # maak ongedaan
+                copied_district = climber_district
                 break
 
     return climber_district
