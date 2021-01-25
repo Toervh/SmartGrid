@@ -44,24 +44,26 @@ def HillClimber(list_house_objects, list_battery_objects):
             house.remove_cables()
             for battery in list_batteries_copy:
                 try:
-                    
                     battery.houses.remove(house.id)
                     battery.houses_objects.remove(house)
+                    for element in old_cables:
+                        battery_cables = [i for i in battery.cables if i != element]
                 except ValueError:
                     continue
+            
+            connect_random = random.choice(list_batteries_copy)
 
-            # kies uit alle mogelijk aansluitpunten (gepruned op dichtsbijzijnd?) een aansluitpunt
-            # sluit deze optie weer aan
+            # Van hieruit een batterij zien te vinden :-|            
             
-            
-            # check of de kosten hoger zijn gewordenvvv
+            # check of de kosten hoger zijn geworden vvv
 
             if climber_district.costs_shared < copied_district.costs_shared:   #of kabelkost?
                 current_district_iteration = copy.deepcopy(copied_district)
                 climber_district = current_district_iteration
             
             elif climber_district.costs_shared > copied_district.costs_shared:
-                # maak ongedaan
+                battery.houses.remove(house.id)
+                battery.houses_objects.remove(house)
                 N+=1
             
             elif climber_district.costs_shared > copied_district.costs_shared and N > 10:
