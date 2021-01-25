@@ -26,12 +26,12 @@ if __name__ == '__main__':
     # ****-------------Instantiating the object-------------****
     district_chosen = choose_district()
     d = District(id, district_chosen[1], district_chosen[0])
-    choose_algorithm(district_chosen[1], district_chosen[0])
+    # choose_algorithm(district_chosen[1], district_chosen[0])
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
-    d.shuffle_houses()
-    start_time = time.monotonic()
-    end_time = time.monotonic()
-    print(timedelta(seconds=end_time - start_time))
+    # d.shuffle_houses()
+    # start_time = time.monotonic()
+    # end_time = time.monotonic()
+    # print(timedelta(seconds=end_time - start_time))
     # print('Welcome to SmartGrid algorithms')
     # print('==========')
     # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
@@ -65,55 +65,55 @@ if __name__ == '__main__':
     #     taken_list.append
 
     # ****------------------RUNS K-MEANS ClUSTERING DISTRICT--------------------****
-    # list_results = []
-    # list_districts = []
-    # i = 0
-    # while len(list_results) < 100:
-    #     while True:
-    #         try:
-    #             original_district = copy.deepcopy(d)
-    #             k_means_district = k_means(original_district)
-    #             list_results.append(k_means_district.costs_shared)
-    #             list_districts.append(k_means_district)
-    #             # visualise(v)
-    #             break
-    #
-    #         except NoBatteryError:
-    #             pass
-    #     i += 1
-    #     print(i)
-    # plot_results(list_results)
-    # j = 0
-    # lowest_cost = 50000
-    # lowest_cost_district = None
-    # for j in range(len(list_results)):
-    #     if list_results[j] < lowest_cost:
-    #         lowest_cost = list_results[j]
-    #         lowest_cost_district = list_districts[j]
-    #     j += 1
-    # visualise(lowest_cost_district)
-    # ****------------------RUNS CLOSEST DISTRICT--------------------****
     list_results = []
     list_districts = []
-    while len(list_results) < 1:
+    i = 0
+    while len(list_results) < 100:
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                closest_district = closest_assignment(original_district)
-                list_results.append(closest_district.costs_shared)
-                print("One iteration done")
-                print(closest_district.costs_shared)
-                a = visualise(closest_district)
+                k_means_district = k_means(original_district)
+                list_results.append(k_means_district.costs_shared)
+                list_districts.append(k_means_district)
+                # visualise(v)
                 break
 
             except NoBatteryError:
                 pass
-
-    # a = visualise(closest_district)
-    closest_district.dict_me()
-    print(f"Cost shared: {closest_district.costs_shared}")
-
+        i += 1
+        print(i)
     plot_results(list_results)
+    j = 0
+    lowest_cost = 50000
+    lowest_cost_district = None
+    for j in range(len(list_results)):
+        if list_results[j] < lowest_cost:
+            lowest_cost = list_results[j]
+            lowest_cost_district = list_districts[j]
+        j += 1
+    visualise(lowest_cost_district)
+    # ****------------------RUNS CLOSEST DISTRICT--------------------****
+    # list_results = []
+    # list_districts = []
+    # while len(list_results) < 1:
+    #     while True:
+    #         try:
+    #             original_district = copy.deepcopy(d)
+    #             closest_district = closest_assignment(original_district)
+    #             list_results.append(closest_district.costs_shared)
+    #             print("One iteration done")
+    #             print(closest_district.costs_shared)
+    #             a = visualise(closest_district)
+    #             break
+    #
+    #         except NoBatteryError:
+    #             pass
+    #
+    # # a = visualise(closest_district)
+    # closest_district.dict_me()
+    # print(f"Cost shared: {closest_district.costs_shared}")
+    #
+    # plot_results(list_results)
 
     # ****------------------RUNS RANDOM DISTRICT---------------------****
     # while True:
