@@ -22,23 +22,33 @@ def HillClimber(list_house_objects, list_battery_objects):
     
     list_batteries = []
     for battery in copied_district.batteries:
-        list_batteries.append(battery)
+        x_battery = battery.x_coordinate
+        y_battery = battery.y_coordinate
+        list_batteries.append((x_battery, y_battery))
+
+        for cable in battery.cables:
+                cable_x = cable.x_coordinate
+                cable_y = cable.y_coordinate
+                list_batteries.append((cable_x, cable_y))
+
     list_batteries_copy = copy.deepcopy(list_batteries)
 
     for house in copied_district.houses:
         N = 0
         while True:
             # haal dit huis uit zn batterij etc
+            old_battery = house.connected_battery
+            old_cables = copy.deepcopy(house.cables)
+
             house.remove_connected_battery()
             house.remove_cables()
             for battery in list_batteries_copy:
                 try:
+                    
                     battery.houses.remove(house.id)
                     battery.houses_objects.remove(house)
                 except ValueError:
                     continue
-            
-            
 
             # kies uit alle mogelijk aansluitpunten (gepruned op dichtsbijzijnd?) een aansluitpunt
             # sluit deze optie weer aan

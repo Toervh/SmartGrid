@@ -1,5 +1,7 @@
 import csv
 import copy
+import time
+from datetime import timedelta
 from code.classes.battery import Battery
 from code.classes.house import House
 from code.classes.district import District
@@ -23,10 +25,12 @@ if __name__ == '__main__':
     # ****-------------Instantiating the object-------------****
     district_chosen = choose_district()
     d = District(id, district_chosen[1], district_chosen[0])
-
+    choose_algorithm(district_chosen[1], district_chosen[0])
     # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
     d.shuffle_houses()
-
+    start_time = time.monotonic()
+    end_time = time.monotonic()
+    print(timedelta(seconds=end_time - start_time))
     # print('Welcome to SmartGrid algorithms')
     # print('==========')
     # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
@@ -60,22 +64,22 @@ if __name__ == '__main__':
     #     taken_list.append
 
     # ****------------------RUNS K-MEANS ClUSTERING DISTRICT--------------------****
-    list_results = []
-    i = 0
-    while len(list_results) < 1000:
-        while True:
-            try:
-                original_district = copy.deepcopy(d)
-                k_means_district = k_means(original_district)
-                list_results.append(k_means_district.costs_shared)
-                # visualise(v)
-                break
+    # list_results = []
+    # i = 0
+    # while len(list_results) < 1000:
+    #     while True:
+    #         try:
+    #             original_district = copy.deepcopy(d)
+    #             k_means_district = k_means(original_district)
+    #             list_results.append(k_means_district.costs_shared)
+    #             # visualise(v)
+    #             break
 
-            except NoBatteryError:
-                pass
-        i += 1
-        print(i)
-    plot_results(list_results)
+    #         except NoBatteryError:
+    #             pass
+    #     i += 1
+    #     print(i)
+    # plot_results(list_results)
 
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
     # list_results = []
