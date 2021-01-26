@@ -36,8 +36,8 @@ def k_means(district):
 
     previous_list = []
     # a = visualise(new_district)
-
     while True:
+        # list_batteries = new_district.batteries
 
         current_list = []
         current_battery = None
@@ -49,12 +49,15 @@ def k_means(district):
             battery.houses_objects = []
             battery.houses = []
 
+
         for house in new_district.houses:
+
             selected_battery = None
             closest_difference = grid
 
             current_x = house.x_coordinate
             current_y = house.y_coordinate
+
             for battery in new_district.batteries:
 
                 battery_x = battery.x_coordinate
@@ -83,6 +86,7 @@ def k_means(district):
 
                 else:
                     print(f"creating new battery")
+                    # list_batteries.remove(selected_battery)
                     new_battery = Battery(len(new_district.batteries)+1, selected_battery.x_coordinate + 1, selected_battery.y_coordinate + 1, 0)
                     print(f"created new battery. ID: {new_battery.id}")
                     new_battery.set_powerstar()
