@@ -55,13 +55,14 @@ def choose_algorithm(list_house_objects, list_battery_objects):
             except NoBatteryError:
                 pass
 
-        a = visualise(closest_district)
-        closest_district.dict_me()
-        print(f"Cost shared: {closest_district.costs_shared}")
-        return closest_district
+        a = visualise(finished_district)
+        finished_district.dict_me()
+        print(f"Cost shared: {finished_district.costs_shared}")
+        return finished_district
     elif program == 'multiple closest':
         N = input("You selected multiple closest. How many?")       
-        int_n = int(N) 
+        int_n = int(N)
+        results_list = [] 
         with open("results.txt", "a") as file_results:
             results_list = []
             for num in range(int_n):
@@ -70,9 +71,11 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                     original_district = copy.deepcopy(d)
                     initializing_district = Closest(original_district)
                     closest_district = initializing_district.run()
+                    results_list.append(closest_district)
                     file_results.write(f"try: {num}. Result:" )
                     file_results.write(str(closest_district.costs_shared) + '\n')
                     results_list.append(closest_district.costs_shared)
+
 
                 except NoBatteryError:
                     pass
