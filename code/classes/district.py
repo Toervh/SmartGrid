@@ -17,12 +17,13 @@ class District:
         for house in houses:
             self.all_house_xy.append((int(house.x_coordinate), int(house.y_coordinate)))
 
-        for battery in self.batteries:
-            self.costs_shared += 5000
 
     def shuffle_houses(self):
 
         random.shuffle(self.houses)
+
+    def update_cost(self, list_items, price):
+        self.costs_shared += list_items * price
 
 
     def print_district(self):

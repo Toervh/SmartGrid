@@ -44,7 +44,7 @@ def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y
     for cable in xy_coordinates:
         if cable in battery.cables:
             xy_coordinates.remove(cable)
-        district.costs_shared += 9
+
 
     # Now the list is cleared of duplicate existing nodes: Create new cables for each coordinate in XY list that is new.
     for i in range(len(xy_coordinates)):
@@ -52,3 +52,5 @@ def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y
         house.cables.append(cable)
         district.cables_coordinates.append(cable)
         battery.cables.append(cable)
+
+    return xy_coordinates

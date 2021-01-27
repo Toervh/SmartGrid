@@ -26,74 +26,37 @@ if __name__ == '__main__':
     # ****-------------Instantiating the object-------------****
     district_chosen = choose_district()
     d = District(id, district_chosen[1], district_chosen[0])
-    # choose_algorithm(district_chosen[1], district_chosen[0])
-    # ****-------------SHUFFLE HOUSES FOR RANDOM RESULT-------------****
-    # d.shuffle_houses()
-    # start_time = time.monotonic()
-    # end_time = time.monotonic()
-    # print(timedelta(seconds=end_time - start_time))
-    # print('Welcome to SmartGrid algorithms')
-    # print('==========')
-    # print(' Random\n Closest\n Multiple Random\n Multiple Randomized Closest')
-    # print('==========')
-    # program = input('What program would you like to run?\n' )
-    #
-    # prompting_dict = {
-    #     'Random': random_assignment(d),
-    #     'Closest': closest_assignment(d),
-    #     'Multiple Random': run_multiple_random(list_house_objects, list_battery_objects),
-    #     'Multiple Randomized Closest': run_multiple_closest(d)
-    # }
-
-    # run = prompting_dict[program]
-    #
-    #
-    # def can_cause_index_error(some_list):
-    #     other_list = []
-    #     for element in some_list:
-    #         if element not in taken_list:
-    #             other_list.append(element)
-    #
-    #     raise Exception("no options"):
-    #
-    #     return other_list
-    # option = [1, 2, 3, 4]
-    #
-    # while True:
-    #     options = can_cause_index_error(option)
-    #
-    #     taken_list.append
-
+    choose_algorithm(district_chosen[1], district_chosen[0])
     # ****------------------RUNS K-MEANS ClUSTERING DISTRICT--------------------****
-    list_results = []
-    list_districts = []
-    i = 0
-    while len(list_results) < 100:
-        while True:
-            try:
-                original_district = copy.deepcopy(d)
-                k_means_district = k_means(original_district)
-                list_results.append(k_means_district.costs_shared)
-                list_districts.append(k_means_district)
-                # visualise(k_means_district)
-                break
-
-            except NoBatteryError:
-                pass
-        i += 1
-        print(i)
+    # list_results = []
+    # list_districts = []
+    # i = 0
+    # while len(list_results) < 100:
+    #     while True:
+    #         try:
+    #             original_district = copy.deepcopy(d)
+    #             k_means_district = k_means(original_district)
+    #             list_results.append(k_means_district.costs_shared)
+    #             list_districts.append(k_means_district)
+    #             # visualise(k_means_district)
+    #             break
+    #
+    #         except NoBatteryError:
+    #             pass
+    #     i += 1
+    #     print(i)
     # plot_results(list_results)
-    j = 0
-    lowest_cost = 50000
-    lowest_cost_district = None
-    for j in range(len(list_results)):
-        if list_results[j] < lowest_cost:
-            lowest_cost = list_results[j]
-            lowest_cost_district = list_districts[j]
-        j += 1
-    print(sum(list_results) / len(list_results))
-    print(lowest_cost_district.costs_shared)
-    visualise(lowest_cost_district)
+    # j = 0
+    # lowest_cost = 50000
+    # lowest_cost_district = None
+    # for j in range(len(list_results)):
+    #     if list_results[j] < lowest_cost:
+    #         lowest_cost = list_results[j]
+    #         lowest_cost_district = list_districts[j]
+    #     j += 1
+    # print(sum(list_results) / len(list_results))
+    # print(lowest_cost_district.costs_shared)
+    # visualise(lowest_cost_district)
     # ****------------------RUNS CLOSEST DISTRICT--------------------****
     # list_results = []
     # list_districts = []

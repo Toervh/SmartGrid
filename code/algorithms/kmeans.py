@@ -23,6 +23,7 @@ def k_means(district):
         new_list.append(battery)
         battery.set_imerseIII()
 
+
     i = 0
     for i in range(5):
         new_list[i].x_coordinate = random_coordinates[i][0]
@@ -85,10 +86,7 @@ def k_means(district):
 
 
                 else:
-                    print(f"creating new battery")
-                    # list_batteries.remove(selected_battery)
                     new_battery = Battery(len(new_district.batteries)+1, selected_battery.x_coordinate + 1, selected_battery.y_coordinate + 1, 0)
-                    print(f"created new battery. ID: {new_battery.id}")
                     new_battery.set_powerstar()
                     new_district.batteries.append(new_battery)
                     selected_battery = new_battery
@@ -100,8 +98,7 @@ def k_means(district):
             selected_battery.add_houses(house.id)
             selected_battery.add_houses_objects(house)
 
-        # let user know a succesfull grouping was made
-        # print("Connected once")
+
 
         for battery in new_district.batteries:
             x_list = []
@@ -122,9 +119,6 @@ def k_means(district):
             battery.y_coordinate = y_average
             current_list.append((x_average, y_average))
 
-        # print(f"previous list: {previous_list}")
-        # print(f"corrected list: {current_list}")
-        # a = visualise(new_district)
 
         if not previous_list:
             previous_list = current_list
@@ -136,45 +130,28 @@ def k_means(district):
                 previous_list = current_list
 
 
-        print("One iteration finished.")
+        # print("One iteration finished.")
         # time.sleep(5)
 
     for battery in new_district.batteries:
         if battery.type == "Imerse-III":
             if battery.current_capacity <= 900:
                 battery.downgrade()
-                print("Downgrading from imerse-III to Imerse-II")
-                print(battery.type)
         if battery.type == "Imerse-II":
             if battery.current_capacity <= 450:
                 battery.downgrade()
-                print("Downgrading from Imerse-II to PowerStar")
-                print(battery.type)
         new_district.costs_shared += battery.price
 
         for house in battery.houses_objects:
 
             closest_cable = find_closest_cable(battery, house)
-            create_cable(house.x_coordinate, house.y_coordinate, closest_cable.x_coordinate, closest_cable.y_coordinate, new_district, house, battery)
+            list_cables = create_cable(house.x_coordinate, house.y_coordinate, closest_cable.x_coordinate, closest_cable.y_coordinate, new_district, house, battery)
+
 
     for house in new_district.houses:
-        print(f"house ID: {house.id}. connected to: {house.connected_battery.id}")
-    print(f"nr of batteries: {len(new_district.batteries)}")
+        new_district.update_cost(len(house.cables), 9)
     for battery in new_district.batteries:
-        print(f"battery id: {battery.id}. type: {battery.type}. max capacity: {battery.capacity}. current: {battery.current_capacity}. x: {battery.x_coordinate} y: {battery.y_coordinate}")
-    # Swap function to be perfected. after done this piece of code will see if there are available swaps that enhance
-    # Efficiency.
-
-    # new_district.shuffle_houses()
-    # for house in new_district.houses:
-    #     print(f"old battery = {house.connected_battery.id}")
-    #     house_swap = swap(house, new_district)
-    #     if house_swap:
-    #
-    #         print(f"house: {house.id} swapped. new battery: {house.connected_battery.id}")
-    # for battery in new_district.batteries:
-    #     print(f"battery {battery.id}. capacity: {battery.current_capacity}")
-
+        new_district.update_cost(1, battery.price)
 
     print("Finished plotting.")
     print(f"costs shared: {new_district.costs_shared}")
