@@ -8,6 +8,7 @@ class District:
         self.batteries = batteries
         self.costs_shared = 0
         self.cables_coordinates = []
+        self.cable_objects = []
         self.all_house_xy = []
         self.all_battery_xy = []
 
@@ -17,6 +18,8 @@ class District:
         for house in houses:
             self.all_house_xy.append((int(house.x_coordinate), int(house.y_coordinate)))
 
+    def add_cables(self, cable):
+        self.cable_objects.append(cable)
 
     def shuffle_houses(self):
 
@@ -25,6 +28,8 @@ class District:
     def update_cost(self, list_items, price):
         self.costs_shared += list_items * price
 
+    def degrade_cost(self, list_items, price):
+        self.costs_shared -= list_items * price
 
     def print_district(self):
         for battery in self.batteries:

@@ -36,25 +36,22 @@ def visualise(district):
     p.square(list_batteries_x_coordinates, list_batteries_y_coordinates, size=20, color="blue", alpha=0.5)
     p.circle(list_houses_x_coordinates, list_houses_y_coordinates, size=10, color="red", alpha=0.5)
 
-    # Creates the dict of lists of tuples.
-    battery_dict = {}
-    for battery in list_batteries:
-        list_house = []
-        battery_dict[battery.id] = list_house
-        for house in battery.houses_objects:
-            list_house.append((house.x_coordinate, house.y_coordinate))
 
-    # print(f"battery dict: {battery_dict}")
+    for house in district.houses:
+        print(f"house.x_coordinate: {house.x_coordinate}. house.y_coordiante: {house.y_coordinate}.")
+        for cable in house.cables:
+            print(f"cable.x : {cable.x_coordinate}. cable_y: {cable.y_coordinate}")
+        # breakpoint()
+        i = 0
+        list_cables = []
+        for cable in house.all_cables:
+            list_cables.append(cable)
+        len_list_cables = len(list_cables)
+        while i < len_list_cables-1:
+            p.step([list_cables[i].x_coordinate, list_cables[i+1].x_coordinate], [list_cables[i].y_coordinate, list_cables[i+1].y_coordinate], line_width=1)
 
-    # Draws the cables, iterating over the keys and the houses.
-    for i in battery_dict.keys():
-        current_battery = battery_dict.get(i, None)
-        j = 0
-        while j < len(current_battery):
-            current_house = current_battery[j]
-            p.step([list_batteries_x_coordinates[i - 1], current_house[0]], [list_batteries_y_coordinates[i - 1], current_house[1]], line_width=1)
-            j+=1
-        i+=1
-    return(show(p))
+            i +=1
 
+
+    return show(p)
     

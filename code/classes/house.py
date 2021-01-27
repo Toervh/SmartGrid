@@ -6,6 +6,7 @@ class House:
         self.output = output
         self.connected_battery = None
         self.cables = []
+        self.all_cables = []
 
     def add_connected_battery(self, battery):
         self.connected_battery = battery

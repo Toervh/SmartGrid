@@ -15,6 +15,8 @@ class Random:
         """
         Randomly assign each node with one of the possibilities.
         """
+        # Update cost for every battery in district.
+        district.update_cost(len(district.batteries), 5000)
 
         # Loops through all the houses
         for house in district.houses:
@@ -48,8 +50,11 @@ class Random:
             random_battery.update_capacity(house.output)
 
             # Creates a cable to calculate the length.
-            create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, district, house,
+            cables = create_cable(house.x_coordinate, house.y_coordinate, closest_x, closest_y, district, house,
                         random_battery)
+
+            # Update cost of district for every cable created.
+            district.update_cost(len(cables), 9)
 
         # The new district is now randomized and should be named as such.
         random_district = district

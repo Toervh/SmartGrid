@@ -16,23 +16,24 @@ def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y
 
     # Check if the distance between X points is negative.
     if start_x_coordinate > end_x_coordinate:
-        for x in range(end_x_coordinate, start_x_coordinate):
+        for x in range(start_x_coordinate, end_x_coordinate - 1, -1):
             x_coordinates.append(x)
             y_coordinates.append(start_y_coordinate)
     # This is if the distance is positive.
     else:
-        for x in range(start_x_coordinate, end_x_coordinate):
+        for x in range(start_x_coordinate, end_x_coordinate + 1):
             x_coordinates.append(x)
             y_coordinates.append(start_y_coordinate)
 
     # Check if the distance between Y points is negative.
     if start_y_coordinate > end_y_coordinate:
-        for y in range(end_y_coordinate, start_y_coordinate):
+        for y in range(start_y_coordinate, end_y_coordinate - 2, -1):
             y_coordinates.append(y)
             x_coordinates.append(end_x_coordinate)
+
     # Check if the distance is positive.
     else:
-        for y in range(start_y_coordinate, end_y_coordinate + 1):
+        for y in range(start_y_coordinate, end_y_coordinate + 2):
             y_coordinates.append(y)
             x_coordinates.append(end_x_coordinate)
 
@@ -41,6 +42,10 @@ def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y
         xy_coordinates.append((x_coordinates[i], y_coordinates[i]))
 
     # Use the XY list to check if there were already cables at that node. If so this deletes them.
+    for i in range(len(xy_coordinates)):
+        cable = Cable(x_coordinates[i], y_coordinates[i], xy_coordinates[i], battery)
+        house.all_cables.append(cable)
+
     for cable in xy_coordinates:
         if cable in battery.cables:
             xy_coordinates.remove(cable)
@@ -50,7 +55,9 @@ def create_cable(start_x_coordinate, start_y_coordinate, end_x_coordinate, end_y
     for i in range(len(xy_coordinates)):
         cable = Cable(x_coordinates[i], y_coordinates[i], xy_coordinates[i], battery)
         house.cables.append(cable)
+
         district.cables_coordinates.append(cable)
+        district.add_cables(cable)
         battery.cables.append(cable)
 
     return xy_coordinates

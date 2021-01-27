@@ -14,7 +14,7 @@ from pprint import pprint
 def choose_algorithm(list_house_objects, list_battery_objects):
     id = 1
     d = District(id, list_house_objects, list_battery_objects)
-    d.shuffle_houses()
+    # d.shuffle_houses()
 
     keynames = ["random", "closest", "multiple random", "multiple closest", "k-means"]
 
@@ -44,6 +44,7 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                 except NoBatteryError:
                     pass
             print(sorted(results_list))
+
     elif program == 'closest':
         while True:
             try:
@@ -53,16 +54,20 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                 break
 
             except NoBatteryError:
+                print("battery error")
                 pass
 
         a = visualise(finished_district)
         finished_district.dict_me()
         print(f"Cost shared: {finished_district.costs_shared}")
         return finished_district
+
+
+
     elif program == 'multiple closest':
         N = input("You selected multiple closest. How many?")       
         int_n = int(N)
-        results_list = [] 
+        results_list = []
         with open("results.txt", "a") as file_results:
             results_list = []
             for num in range(int_n):
@@ -119,7 +124,7 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                     list_results.append(k_means_district.costs_shared)
                     list_districts.append(k_means_district)
                     break
-        
+
                 except NoBatteryError:
                     pass
             i += 1
@@ -136,7 +141,7 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         print(sum(list_results) / len(list_results))
         print(lowest_cost_district.costs_shared)
         visualise(lowest_cost_district)
-    
+
     # if program == 'closest' or 'random' or 'k-means':
     #         while True:
     #             hillclimber_input = input('Do you want to optimize using Hillclimber? Y/N')
@@ -145,9 +150,9 @@ def choose_algorithm(list_house_objects, list_battery_objects):
     #             elif hillclimber_input.tolower() == 'n':
     #                 print('Goodbye.')
     #                 quit()
-                
+
     #             print('Not the right input.')
-    #         #climber_district = Hillclimber(finished_district)    
+    #         #climber_district = Hillclimber(finished_district)
     #         #climber_district.run()
     # elif program == 'multiple closest' or 'multiple random':
     #     while True:
@@ -157,7 +162,7 @@ def choose_algorithm(list_house_objects, list_battery_objects):
     #         elif hillclimber_input.tolower() == 'n':
     #             print('Goodbye.')
     #             quit()
-                
+
     #         print('Not the right input.')
 
 def choose_district():
