@@ -32,8 +32,9 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
 ## Gebruik:
 * Main.py:
   * Met main.py run je de mogelijkheden. 
-  * De opties zijn weggecomment. 
-  * Op het moment dat je een optie wil gebruiken moet je hetgeen wat je wil gebruiken als code weer neer moet zetten en python3 main.py runnen.
+  * De prompt maakt het mogelijk om één van de algoritmes te kiezen.
+  * Output is altijd tenminste een lijst van de resultaten en een scatterplot. 
+
 
 ## Huidige mogelijkheden:
 * Dataverwerking
@@ -41,7 +42,7 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
   * Output is in een .json file overzichtelijk gemaakt.
 * Classes:
   * De classes zijn batterijen en huizen die in de superclass van district worden opgenomen. Met de algoritmes van random/closest wordt er een instantie van district gemaakt die weergegeven wordt door Bokeh.
-  * Cable is een klasse die wordt geïnstantieerd door de algoritmes van 
+  * Cable is een klasse die wordt geïnstantieerd door de algoritmes van het programma om zo de prijs te berekenen.
 * De districten kunnen op twee manieren onderverdeeld worden.
   * Random:
     * Random sluit de huizen aan op degene die nog in de batterij passen qua capaciteit. Uit deze batterijen wordt willekeurig er een aan het huis toegewezen.
@@ -51,5 +52,4 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
   * Momenteel wordt de aansluiting van de huizen op de batterijen weergegeven door middel van scatterplots en step graphs in visualise.py met Bokeh.
 
 ## Benodigdheden
-* .json library
-* bokeh library (pip3 install bokeh)
+pip install -r requirements.txt

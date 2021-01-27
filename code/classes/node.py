@@ -1,5 +1,3 @@
-
-
 class Node:
 
     def __init__(self, x_coordinate, y_coordinate, battery):
