@@ -4,21 +4,23 @@ from code.classes.district import District
 from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import Random
 from code.algorithms.closest import Closest
+from code.algorithms.kmeans import K_means
 from code.classes.exceptions import NoBatteryError
 from code.functions.visualise import visualise
+from code.functions.results_graph import plot_results
+from code.functions.swap import swap
 from pprint import pprint
-from code.functions.multiple_average import run_multiple_random, run_multiple_closest
 
 def choose_algorithm(list_house_objects, list_battery_objects):
     id = 1
     d = District(id, list_house_objects, list_battery_objects)
     d.shuffle_houses()
 
-    keynames = ["random", "closest", "multiple random", "multiple closest"]
+    keynames = ["random", "closest", "multiple random", "multiple closest", "k-means"]
 
     print('What algorithm do you want to run?')
     print('==========')
-    print(' Random\n Closest\n Multiple Random\n Multiple Closest')
+    print(' Random\n Closest\n Multiple Random\n Multiple Closest\n K-Means')
     print('==========')
 
     while True:
@@ -29,14 +31,16 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         print('Algorithm not found, try again.')
 
     if program == 'multiple random':
+        N = input("You selected multiple random. How many?")
+        int_n = int(N)
         with open("results_random.txt", "a") as file_results:
-            for num in range(1000):
+            for num in range(int_n):
                 try:
                     original_district = copy.deepcopy(d)
-                    initializing_district = Random(original_district)
-                    random_district = initializing_district.run()
+                    random_district = Random(original_district)
+                    finished_district = random_district.run()
                     file_results.write(f"try: {num}. Result:" )
-                    file_results.write(str(random_district.costs_shared) + '\n')
+                    file_results.write(str(finished_district.costs_shared) + '\n')
                 except NoBatteryError:
                     pass
             print(sorted(results_list))
@@ -44,8 +48,8 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                initializing_district = Closest(original_district)
-                closest_district = initializing_district.run()
+                closest_district = Closest(original_district)
+                finished_district = closest_district.run()
                 break
 
             except NoBatteryError:
@@ -56,10 +60,11 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         print(f"Cost shared: {closest_district.costs_shared}")
         return closest_district
     elif program == 'multiple closest':
-        print("You selected multiple closest.")        
+        N = input("You selected multiple closest. How many?")       
+        int_n = int(N) 
         with open("results.txt", "a") as file_results:
             results_list = []
-            for num in range(10000):
+            for num in range(int_n):
         
                 try:
                     original_district = copy.deepcopy(d)
@@ -96,6 +101,61 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         randomized_district.dict_me()
         a = visualise(randomized_district)
         print(f"Cost shared: {randomized_district.costs_shared}")
+
+    elif program == 'k-means':
+        print("You selected K-means.")
+        list_results = []
+        list_districts = []
+        i = 0
+        while len(list_results) < 100:
+            while True:
+                try:
+                    original_district = copy.deepcopy(d)
+                    initializing_district = K_means(original_district)
+                    k_means_district = initializing_district.run()
+                    list_results.append(k_means_district.costs_shared)
+                    list_districts.append(k_means_district)
+                    break
+        
+                except NoBatteryError:
+                    pass
+            i += 1
+            print(i)
+        plot_results(list_results)
+        j = 0
+        lowest_cost = 50000
+        lowest_cost_district = None
+        for j in range(len(list_results)):
+            if list_results[j] < lowest_cost:
+                lowest_cost = list_results[j]
+                lowest_cost_district = list_districts[j]
+            j += 1
+        print(sum(list_results) / len(list_results))
+        print(lowest_cost_district.costs_shared)
+        visualise(lowest_cost_district)
+    
+    # if program == 'closest' or 'random' or 'k-means':
+    #         while True:
+    #             hillclimber_input = input('Do you want to optimize using Hillclimber? Y/N')
+    #             if hillclimber_input.tolower() == 'y':
+    #                 break
+    #             elif hillclimber_input.tolower() == 'n':
+    #                 print('Goodbye.')
+    #                 quit()
+                
+    #             print('Not the right input.')
+    #         #climber_district = Hillclimber(finished_district)    
+    #         #climber_district.run()
+    # elif program == 'multiple closest' or 'multiple random':
+    #     while True:
+    #         hillclimber_input = input('Do you want to optimize the cheapest district using Hillclimber? Y/N')
+    #         if hillclimber_input.tolower() == 'y':
+    #             break
+    #         elif hillclimber_input.tolower() == 'n':
+    #             print('Goodbye.')
+    #             quit()
+                
+    #         print('Not the right input.')
 
 def choose_district():
     district_dict = {

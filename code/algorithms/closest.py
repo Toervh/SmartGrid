@@ -10,11 +10,6 @@ class Closest:
     Checks the capacity and calculates the distance.
     MAY CAUSE ENDLESS LOOP
     """
-    closest_district = None
-    district.shuffle_houses()
-    district.update_cost(len(district.batteries), 5000)
-    for house in district.houses:
-
 
     def __init__(self, district):
         self.district = copy.deepcopy(district)
@@ -41,8 +36,6 @@ class Closest:
         closest_district = district
 
 
-    closest_district.shuffle_houses()
-    climber_district = swap(closest_district)
         closest_district.shuffle_houses()
         climber_district = swap(closest_district)
         # for battery in closest_district.batteries:
@@ -52,12 +45,6 @@ class Closest:
         #         house_swap = swap(closest_district)
         #         if house_swap:
 
-    return climber_district
-        #             print(f"house: {house.id} swapped. new battery: {house.connected_battery.id}")
-        #         # if house_swap:
-        #         #     closest_assignment(closest_district)
-        #     for battery in closest_district.batteries:
-        #         print(f"battery {battery.id}. capacity: {battery.current_capacity}")
         return climber_district
 
     def run(self):

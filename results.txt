@@ -1,0 +1,12 @@
+try: 0. Result:13545
+try: 3. Result:11934
+try: 5. Result:12708
+try: 6. Result:14085
+try: 10. Result:12726
+try: 14. Result:14832
+try: 20. Result:13194
+try: 21. Result:12654
+try: 22. Result:13536
+try: 23. Result:14031
+try: 26. Result:12420
+try: 30. Result:12861
