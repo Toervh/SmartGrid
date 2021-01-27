@@ -1,5 +1,8 @@
 import json
 import random
+import csv
+import matplotlib.pyplot as plt
+from bokeh.plotting import figure, output_file, show
 
 class District:
     def __init__(self, id, houses, batteries):
@@ -70,3 +73,4 @@ class District:
 
         with open('json.txt', 'w') as outfile:
             json.dump(district_list, outfile, indent=4)
+

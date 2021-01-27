@@ -1,4 +1,3 @@
-import csv
 import matplotlib.pyplot as plt
 from bokeh.plotting import figure, output_file, show
 
@@ -36,22 +35,23 @@ def visualise(district):
     p.square(list_batteries_x_coordinates, list_batteries_y_coordinates, size=20, color="blue", alpha=0.5)
     p.circle(list_houses_x_coordinates, list_houses_y_coordinates, size=10, color="red", alpha=0.5)
 
-
+    # Iterate over every house, and every cable attached to it.
     for house in district.houses:
-        print(f"house.x_coordinate: {house.x_coordinate}. house.y_coordiante: {house.y_coordinate}.")
-        for cable in house.cables:
-            print(f"cable.x : {cable.x_coordinate}. cable_y: {cable.y_coordinate}")
-        # breakpoint()
         i = 0
+
+        # Making a list, checking it twice, for getting length of amount of cables.
         list_cables = []
         for cable in house.all_cables:
             list_cables.append(cable)
+
+        # Set length of the list for easier grabbing of X and Y to step to.
         len_list_cables = len(list_cables)
-        while i < len_list_cables-1:
-            p.step([list_cables[i].x_coordinate, list_cables[i+1].x_coordinate], [list_cables[i].y_coordinate, list_cables[i+1].y_coordinate], line_width=1)
 
-            i +=1
+        # While there are cables in the list, plot those cables.
+        while i < len_list_cables - 1:
+            p.step([list_cables[i].x_coordinate, list_cables[i + 1].x_coordinate],
+                   [list_cables[i].y_coordinate, list_cables[i + 1].y_coordinate], line_width=1)
 
+            i += 1
 
     return show(p)
-    

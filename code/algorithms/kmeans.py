@@ -3,7 +3,6 @@ from code.functions.lay_cables import create_cable
 from code.functions.find_closest_cable import find_closest_cable
 from code.functions.random_battery import random_battery
 from code.classes.exceptions import NoBatteryError
-from code.functions.visualise import visualise
 from code.functions.check_grid import check_grid
 from code.classes.battery import Battery
 from code.functions.swap import swap
@@ -41,7 +40,6 @@ class K_means:
 
         previous_list = []
         while True:
-            # list_batteries = new_district.batteries
 
             current_list = []
             current_battery = None
@@ -76,13 +74,10 @@ class K_means:
                         selected_battery = battery
 
                 battery_check = selected_battery.check_capacity(house.output)
-                print(f"House: {house.id} connected battery: {selected_battery.id}. type: {selected_battery.type} capacity: {selected_battery.current_capacity}")
 
                 if battery_check is False:
-                    print(f"type: {battery.type}")
 
                     if selected_battery.type == "PowerStar" or selected_battery.type == "Imerse-II":
-                        print("upgrading")
                         selected_battery.upgrade()
 
                     else:

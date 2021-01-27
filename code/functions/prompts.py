@@ -3,11 +3,12 @@ import copy
 from code.classes.district import District
 from code.functions.readfile import load_battery_file, load_house_file
 from code.algorithms.randomize import Random
+from code.algorithms.hillclimber import Hillclimber
 from code.algorithms.closest import Closest
 from code.algorithms.kmeans import K_means
 from code.classes.exceptions import NoBatteryError
-from code.functions.visualise import visualise
 from code.functions.results_graph import plot_results
+from code.functions.visualise import visualise
 from code.functions.swap import swap
 from pprint import pprint
 
@@ -45,19 +46,21 @@ def choose_algorithm(list_house_objects, list_battery_objects):
                     pass
             print(sorted(results_list))
 
+    # CLOSEST
     elif program == 'closest':
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                closest_district = Closest(original_district)
-                finished_district = closest_district.run()
+                initializing_district = Closest(original_district)
+                finished_district = initializing_district.run()
                 break
 
             except NoBatteryError:
-                print("battery error")
                 pass
 
-        a = visualise(finished_district)
+        climber_district = Hillclimber(finished_district)
+        c_district = climber_district.district
+        a = visualise(c_district)
         finished_district.dict_me()
         print(f"Cost shared: {finished_district.costs_shared}")
         return finished_district
@@ -140,7 +143,7 @@ def choose_algorithm(list_house_objects, list_battery_objects):
             j += 1
         print(sum(list_results) / len(list_results))
         print(lowest_cost_district.costs_shared)
-        visualise(lowest_cost_district)
+        a = visualise(lowest_cost_district)
 
     # if program == 'closest' or 'random' or 'k-means':
     #         while True:

@@ -1,5 +1,6 @@
 from code.functions.find_closest_node import find_closest_node
 from code.functions.lay_cables import create_cable
+from code.algorithms.hillclimber import Hillclimber
 from code.functions.swap import swap
 import copy
 
@@ -22,7 +23,7 @@ class Closest:
 
         district.update_cost(len(district.batteries), 5000)
         for house in district.houses:
-            print(house)
+
             # Call function to find the closest node to the house.
             closest_node = find_closest_node(district, house)
             # if closest_node is None:
@@ -38,12 +39,6 @@ class Closest:
         # Return the connected district.
         closest_district = district
 
-
-        # closest_district.shuffle_houses()
-        # climber_district = swap(closest_district)
-
-        # closest_district.shuffle_houses()
-        # climber_district = swap(closest_district)
 
         return closest_district
 
