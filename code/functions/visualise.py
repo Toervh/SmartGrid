@@ -24,10 +24,9 @@ def visualise(district):
     # Makes a list of the batteries to scatterplot.
     list_batteries = list(district.batteries)
     list_batteries_x_coordinates = []
-    for battery in list_batteries:
-        list_batteries_x_coordinates.append(battery.x_coordinate)
     list_batteries_y_coordinates = []
     for battery in list_batteries:
+        list_batteries_x_coordinates.append(battery.x_coordinate)
         list_batteries_y_coordinates.append(battery.y_coordinate)
 
     output_file("plot.html")
