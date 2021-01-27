@@ -47,7 +47,9 @@ Probeer een betere configuratie voor de wijken te vinden met deze batterijen. Je
   * Random:
     * Random sluit de huizen aan op degene die nog in de batterij passen qua capaciteit. Uit deze batterijen wordt willekeurig er een aan het huis toegewezen.
   * Closest:
-    * Closest sluit de huizen aan op de batterijen die deze nog qua capaciteit aan kunnen. Uit deze batterijen wordt de kortste route daarheen gekozen.
+    * Closest (greedy algoritme) sluit de huizen aan op de batterijen die deze nog qua capaciteit aan kunnen. Uit deze batterijen wordt de kortste route daarheen gekozen.
+  * K-means:
+    * K-means genereert batterijen op een willekeurige plek op het grid. Van daaruit worden minimale kosten berekend en worden de batterijen herplaatst om zo tot de laagste kosten te komen.
 * Datavisualisatie
   * Momenteel wordt de aansluiting van de huizen op de batterijen weergegeven door middel van scatterplots en step graphs in visualise.py met Bokeh.
 
