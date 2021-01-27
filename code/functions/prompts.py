@@ -2,8 +2,8 @@ import csv
 import copy
 from code.classes.district import District
 from code.functions.readfile import load_battery_file, load_house_file
-from code.algorithms.randomize import random_assignment
-from code.algorithms.closest import closest_assignment
+from code.algorithms.randomize import Random
+from code.algorithms.closest import Closest
 from code.classes.exceptions import NoBatteryError
 from code.functions.visualise import visualise
 from pprint import pprint
@@ -33,18 +33,19 @@ def choose_algorithm(list_house_objects, list_battery_objects):
             for num in range(1000):
                 try:
                     original_district = copy.deepcopy(d)
-                    random_district = random_assignment(original_district)
+                    initializing_district = Random(original_district)
+                    random_district = initializing_district.run()
                     file_results.write(f"try: {num}. Result:" )
                     file_results.write(str(random_district.costs_shared) + '\n')
                 except NoBatteryError:
                     pass
-            print(results_list)
             print(sorted(results_list))
     elif program == 'closest':
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                closest_district = closest_assignment(original_district)
+                initializing_district = Closest(original_district)
+                closest_district = initializing_district.run()
                 break
 
             except NoBatteryError:
@@ -62,7 +63,8 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         
                 try:
                     original_district = copy.deepcopy(d)
-                    closest_district = closest_assignment(original_district)
+                    initializing_district = Closest(original_district)
+                    closest_district = initializing_district.run()
                     file_results.write(f"try: {num}. Result:" )
                     file_results.write(str(closest_district.costs_shared) + '\n')
                     results_list.append(closest_district.costs_shared)
@@ -85,7 +87,9 @@ def choose_algorithm(list_house_objects, list_battery_objects):
         while True:
             try:
                 original_district = copy.deepcopy(d)
-                randomized_district = random_assignment(original_district)
+                initializing_district = Random(original_district)
+                randomized_district = initializing_district.run()
+
                 break
             except NoBatteryError:
                 pass
