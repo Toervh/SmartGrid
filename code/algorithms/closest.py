@@ -31,14 +31,17 @@ def closest_assignment(district):
 
 
     closest_district.shuffle_houses()
-    for house in closest_district.houses:
-        print(f"old battery = {house.connected_battery.id}")
-        house_swap = swap(house, closest_district)
-        if house_swap:
+    climber_district = swap(closest_district)
+    # for battery in closest_district.batteries:
+    #     for house in battery.houses_objects:
+    #         print(f"{house}")
+    #         print(f"old battery = {house.connected_battery.id}")
+    #         house_swap = swap(closest_district)
+    #         if house_swap:
 
-            print(f"house: {house.id} swapped. new battery: {house.connected_battery.id}")
-        # if house_swap:
-        #     closest_assignment(closest_district)
-    for battery in closest_district.batteries:
-        print(f"battery {battery.id}. capacity: {battery.current_capacity}")
-    return closest_district
+    #             print(f"house: {house.id} swapped. new battery: {house.connected_battery.id}")
+    #         # if house_swap:
+    #         #     closest_assignment(closest_district)
+    #     for battery in closest_district.batteries:
+    #         print(f"battery {battery.id}. capacity: {battery.current_capacity}")
+    return climber_district
