@@ -1,6 +1,7 @@
 from code.functions.find_closest_node import find_closest_node
 from code.functions.lay_cables import create_cable
 from code.classes.district import District
+from code.functions.find_closest_cable import find_closest_cable
 import copy
 
 class Hillclimber:
@@ -123,4 +124,5 @@ class Hillclimber:
     def run(self):
         initializing_district = self.district
         hillclimber_district = self.hillclimber(initializing_district)
+        print(hillclimber_district)
         return hillclimber_district

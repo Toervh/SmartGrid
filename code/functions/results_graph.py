@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from pprint import pprint
 
 def plot_results(results):
 
@@ -22,4 +23,4 @@ def plot_results(results):
     plt.legend()
 
     # function to show the plot
-    plt.show()
+    return plt.show()

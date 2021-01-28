@@ -1,7 +1,6 @@
 from code.classes.cable import Cable
 from code.functions.lay_cables import create_cable
 from code.functions.find_closest_cable import find_closest_cable
-from code.functions.random_battery import random_battery
 from code.classes.exceptions import NoBatteryError
 from code.functions.check_grid import check_grid
 from code.classes.battery import Battery
