@@ -51,6 +51,9 @@ class District:
             print(f"cables: {house.cables}")
 
     def dict_me(self):
+        """
+        This functions prints a dict out to json.txt with all objects and connections within our District.
+        """
         district_list = []
 
         dict_district = {'district': self.id, 'costs-shared': self.costs_shared}

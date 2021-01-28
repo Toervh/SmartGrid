@@ -124,5 +124,4 @@ class Hillclimber:
     def run(self):
         initializing_district = self.district
         hillclimber_district = self.hillclimber(initializing_district)
-        print(hillclimber_district)
         return hillclimber_district

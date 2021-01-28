@@ -8,7 +8,7 @@ from code.algorithms.kmeans import K_means
 from code.classes.exceptions import NoBatteryError
 from code.classes.battery import Battery
 from code.classes.house import House
-from code.algorithms.visualise import visualise
+from code.functions.visualise import visualise
 from code.functions.results_graph import plot_results
 from code.functions.swap import swap
 from pprint import pprint
@@ -25,7 +25,7 @@ class Prompt:
         d = District(id, list_house_objects, list_battery_objects)
 
         keynames = ["random", "closest", "multiple random", "multiple closest", "k-means"]
-        
+
         # Frontend
         print('What algorithm do you want to run?')
         print('==========')
@@ -47,12 +47,12 @@ class Prompt:
             N = input("You selected multiple random. How many?")
             int_n = int(N)
             results_list = []
-            
+
             # Code will write results to a txt file
             with open("results_random.txt", "a") as file_results:
                 cost_shared_list = []
                 for num in range(int_n):
-                    
+
                     try:
                     # Try will only find valid solutions
                         original_district = copy.deepcopy(d)
@@ -62,19 +62,19 @@ class Prompt:
                         # Writer
                         file_results.write(f"try: {num}. Result:" )
                         file_results.write(str(finished_district.costs_shared) + '\n')
-                        
+
                         # Appends list so we can take the cheapest and perform operations on it (Hillclimber/Visualise)
                         results_list.append(finished_district)
                         cost_shared_list.append(finished_district.costs_shared)
 
                     except NoBatteryError:
                         pass
-            
+
                 # Making a list of tuples so we can sort it on it's cost shared value in descending order
                 district_list = []
                 for district in results_list:
                     district_list.append((district, district.costs_shared))
-                
+
                 # Picking the cheapest solution
                 district_list.sort(key=lambda x:x[1])
                 cheapest_tuple = district_list[0]
@@ -84,13 +84,14 @@ class Prompt:
                 print(f"Cheapest district: {cheapest_district}, costs shared: {cheapest_district.costs_shared}")
                 cheapest_district.dict_me()
 
-                # Output in .txt file
+                # Results output in .txt file
                 sum_list = sum(cost_shared_list)
                 average = sum_list/len(cost_shared_list)
                 file_results.write("Average: ")
                 file_results.write(str(average) + '\n')
                 self.choose_climber(cheapest_district)
 
+        # CLOSEST
         elif program == 'closest':
             while True:
                 try:
@@ -108,18 +109,20 @@ class Prompt:
             print(f"Cost shared: {finished_district.costs_shared}")
             self.choose_climber(finished_district)
 
+
+        # MULTIPLE CLOSEST
         elif program == 'multiple closest':
 
             # Asking of x times running the code and initializing of analysis
-            N = input("You selected multiple closest. How many?")       
+            N = input("You selected multiple closest. How many?\n")
             int_n = int(N)
-            results_list = [] 
+            results_list = []
 
             # Code will write results to a txt file
             with open("results.txt", "a") as file_results:
                 cost_shared_list = []
                 for num in range(int_n):
-            
+
                     try:
                     # Try ensures program does not crash if there is no valid solution found, will retry if so
                         original_district = copy.deepcopy(d)
@@ -149,7 +152,7 @@ class Prompt:
                 cheapest_district = cheapest_tuple[0]
 
                 # Output on terminal
-                print(f"Cheapest district: {cheapest_district}, costs shared: {cheapest_district.costs_shared}")
+                print(f"Cheapest district cost: {cheapest_district.costs_shared}")
                 cheapest_district.dict_me()
 
                 sum_list = sum(cost_shared_list)
@@ -159,12 +162,13 @@ class Prompt:
                 file_results.write("Average: ")
                 file_results.write(str(average) + '\n')
 
-                # Next step
+                # Send district to hillclimber function.
                 self.choose_climber(cheapest_district)
 
+        # RANDOM
         elif program == 'random':
             print("You selected random.")
-            while True:                
+            while True:
                 try:
                 # Try will only find valid solutions
                     original_district = copy.deepcopy(d)
@@ -175,14 +179,15 @@ class Prompt:
                     pass
             print(f"Costs shared: {finished_district.costs_shared}")
             self.choose_climber(finished_district)
-        
+
+        # K MEANS
         elif program == 'k-means':
 
-            N = input("You selected K-means. How many times?")
+            N = input("You selected K-means. How many times?\n")
             int_n = int(N)
             list_results = []
             list_districts = []
-            
+
             for num in range(int_n):
                 while True:
                     # Try will only find valid solutions
@@ -200,48 +205,48 @@ class Prompt:
                     except NoBatteryError:
                         pass
 
-            # Plots results 
-            plot_results(list_results)
-            
+            # Plots results
+            # plot_results(list_results)
+
             j = 0
             lowest_cost = 50000
             lowest_cost_district = None
 
-            # Will check what is the most efficient  
+            # Will check what is the most efficient
             for j in range(len(list_results)):
                 if list_results[j] < lowest_cost:
                     lowest_cost = list_results[j]
                     lowest_cost_district = list_districts[j]
                 j += 1
 
-            # Will  print average and lowest cost.            
-            print(sum(list_results) / len(list_results))
-            print(lowest_cost_district.costs_shared)
-            print(lowest_cost_district)
+            # Will  print average and lowest cost.
+            print(f"Average cost: {sum(list_results) / len(list_results)}")
+            print(f"Lowest cost: {lowest_cost_district.costs_shared}")
             self.choose_climber(lowest_cost_district)
 
     def choose_climber(self, district):
         while True:
-            hillclimber_input = input('Do you want to optimize the cheapest district using Hillclimber? Or do you want to visualize the district (Hillclimber/Visualize)')
+            hillclimber_input = input('Do you want to optimize the cheapest district using Hillclimber? Or do you want to visualize the district (Hillclimber/Visualize)\n')
             hillclimber_answer = hillclimber_input.lower()
+
             if hillclimber_answer == 'hillclimber':
-                break
+
+                climber = Hillclimber(district)
+                climber_district = climber.run()
+                print(f"Costs shared: {climber_district.costs_shared}")
+
+                print("Visualizing...")
+                a = visualise(climber_district)
+                return a
+
             elif hillclimber_answer == 'visualize':
-                print(district)
-                print('Visualizing.')
-                visualise(district)
-                quit()
+                print('Visualizing...')
+                a = visualise(district)
+                return a
 
             print('Not the right input.')
+            break
 
-        climber = Hillclimber(district)
-        climber_district = climber.run()
-        print(climber_district)
-        print(f"Costs shared: {climber_district.costs_shared}")
-        print("Visualizing")        
-        a = visualise(climber_district)
-        print("Visualized district.")
-        return a
 
     def choose_district(self):
         district_dict = {
@@ -256,7 +261,7 @@ class Prompt:
             what_district = input('What district do you want to run?\nChoices are: 1, 2, 3\n')
             if what_district in district_dict.keys():
                 break
-            print('Retry please.')
+            print('Retry please.\n')
         battery_csv = 'batteries.csv'
         houses_csv = 'houses.csv'
 
@@ -272,7 +277,7 @@ class Prompt:
         list_all_objects.append(list_house_objects)
         print(f"Loaded District {what_district}.\n\n")
         return list_all_objects
-            
+
     def load_battery_file(self, filename):
         """Loads the batteries into objects from .csv files."""
         list_battery_objects = []
@@ -291,7 +296,7 @@ class Prompt:
                     list_coordinates = coordinates.split(",")
                     x_coordinate = int(list_coordinates[0])
                     y_coordinate = int(list_coordinates[1])
-                    
+
                     # Initializing battery object with reader, each line is object
                     b = Battery(id_loop, x_coordinate, y_coordinate, capacity)
                     list_battery_objects.append(b)
